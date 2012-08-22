@@ -40,7 +40,14 @@
    \"timelines\": {\
       \"Default Timeline\": {\
             \"ElementKeyframes\": {\
-                \"${_Rectangle}\": []\
+                \"${_playerLifeBar}\": [], \
+                \"${_playerLife}\": [], \
+                \"${_enemyText}\": [], \
+                \"${_enemyLife}\": [], \
+                \"${_enemyLifeBar}\": [], \
+                \"${_Rectangle}\": [], \
+                \"${_playerText}\": [], \
+                \"${_lifeBarArea}\": []\
             }\
       }\
    }}\
@@ -49,11 +56,40 @@
 	"pref__general__codeView":"sectionalView",
 	"pref__general__FilterNonAnimatedElements":"false",
 	"symbol_game":{
+		"element_${_enemyLife}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d"},
+		"element_${_lifeBarArea}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"epOpened":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${_enemyLifeBar}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
+		"element_${_playerLifeBar}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"},
+		"element_${_playerLife}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d"},
+		"element_${_playerText}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
 		"element_${_Rectangle}":{
 			"timelineColor2":"0xb099ce",
 			"timelineColor3":"0x70657c",
 			"animationEnabled":"false",
-			"timelineColor":"0xceaef4"}},
+			"timelineColor":"0xceaef4"},
+		"element_${_enemyText}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767"}},
 	"pref__general__AutoKeyframePropertiesArmed":"true",
 	"symbol_stage":{
 		"dummyStageParentWidth":"640px",
@@ -91,7 +127,7 @@
 	"CompZoomFactor":"100",
 	"StageZoomFactor":"100",
 	"usedBOM":"false",
-	"nextElementColorIndex":"11",
+	"nextElementColorIndex":"5",
 	"pref__general__TimelineShowGrid":"true",
 	"symbol_background":{
 		"element_${_fight_bg}":{
