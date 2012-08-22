@@ -40,14 +40,29 @@
    \"timelines\": {\
       \"Default Timeline\": {\
             \"ElementKeyframes\": {\
-                \"${_playerLifeBar}\": [], \
-                \"${_playerLife}\": [], \
-                \"${_enemyText}\": [], \
                 \"${_enemyLife}\": [], \
+                \"${_playerTextCopy}\": [], \
+                \"${_lifeBarArea}\": [], \
+                \"${_lifeBarAreaCopy}\": [], \
+                \"${_serif_pink}\": [], \
+                \"${_attackText}\": [], \
+                \"${_playerLifeBar}\": [], \
                 \"${_enemyLifeBar}\": [], \
                 \"${_Rectangle}\": [], \
+                \"${_playerLifeBarCopy}\": [], \
+                \"${_defenceText}\": [], \
+                \"${_enemyText}\": [], \
+                \"${_enemyLifeBarCopy}\": [], \
                 \"${_playerText}\": [], \
-                \"${_lifeBarArea}\": []\
+                \"${_attackBtn}\": [], \
+                \"${_commandMenuArea}\": [], \
+                \"${_playerLife}\": [], \
+                \"${_enemyTextCopy}\": [], \
+                \"${_defenceBtn}\": [], \
+                \"${_playerLifeCopy}\": [], \
+                \"${_blackcat_stamp}\": [], \
+                \"${_enemyLifeCopy}\": [], \
+                \"${_blackcat_stamp2}\": []\
             }\
       }\
    }}\
@@ -56,40 +71,105 @@
 	"pref__general__codeView":"sectionalView",
 	"pref__general__FilterNonAnimatedElements":"false",
 	"symbol_game":{
-		"element_${_enemyLife}":{
-			"timelineColor2":"0xd8b467",
-			"timelineColor3":"0x81714f",
-			"timelineColor":"0xffd46d"},
-		"element_${_lifeBarArea}":{
-			"timelineColor2":"0xd35d6e",
-			"timelineColor3":"0x7e4b52",
+		"element_${_playerLifeCopy}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad"},
+		"element_${_blackcat_stamp}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767"},
+		"element_${_enemyLifeCopy}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa"},
+		"element_${_playerTextCopy}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8"},
+		"element_${_commandMenuArea}":{
 			"epOpened":"false",
-			"timelineColor":"0xfb657a"},
-		"element_${_enemyLifeBar}":{
-			"timelineColor2":"0x1aa38f",
-			"timelineColor3":"0x2a6a61",
-			"timelineColor":"0x00bda4"},
-		"element_${_playerLifeBar}":{
-			"timelineColor2":"0x4fa275",
-			"timelineColor3":"0x456a55",
-			"timelineColor":"0x50bd82"},
-		"element_${_playerLife}":{
-			"timelineColor2":"0xba5b89",
 			"timelineColor3":"0x734a5f",
-			"timelineColor":"0xdb619d"},
-		"element_${_playerText}":{
-			"timelineColor2":"0xcbbd71",
-			"timelineColor3":"0x7b7652",
-			"timelineColor":"0xeedf79"},
+			"timelineColor":"0xdb619d",
+			"invisible":"false",
+			"timelineColor2":"0xba5b89"},
+		"element_${_playerLifeBarCopy}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4"},
+		"element_${_enemyTextCopy}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f"},
 		"element_${_Rectangle}":{
 			"timelineColor2":"0xb099ce",
 			"timelineColor3":"0x70657c",
 			"animationEnabled":"false",
 			"timelineColor":"0xceaef4"},
+		"element_${_lifeBarAreaCopy}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"element_${_serif_pink}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad"},
+		"element_${_defenceText}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
 		"element_${_enemyText}":{
 			"timelineColor2":"0x81aa62",
 			"timelineColor3":"0x5b6c4d",
-			"timelineColor":"0x91c767"}},
+			"timelineColor":"0x91c767"},
+		"element_${_playerText}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${_playerLifeBar}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"},
+		"element_${_blackcat_stamp2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"element_${_defenceBtn}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"epOpened":"false",
+			"timelineColor":"0x50bd82"},
+		"element_${_lifeBarArea}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"epOpened":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${_attackText}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${_attackBtn}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"epOpened":"false",
+			"timelineColor":"0xffd46d"},
+		"element_${_playerLife}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d"},
+		"element_${_enemyLifeBar}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
+		"element_${_enemyLifeBarCopy}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a"},
+		"element_${_enemyLife}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d"}},
+	"viewStartMs":"-25",
 	"pref__general__AutoKeyframePropertiesArmed":"true",
 	"symbol_stage":{
 		"dummyStageParentWidth":"640px",
@@ -127,7 +207,7 @@
 	"CompZoomFactor":"100",
 	"StageZoomFactor":"100",
 	"usedBOM":"false",
-	"nextElementColorIndex":"5",
+	"nextElementColorIndex":"7",
 	"pref__general__TimelineShowGrid":"true",
 	"symbol_background":{
 		"element_${_fight_bg}":{

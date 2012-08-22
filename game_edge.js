@@ -159,18 +159,20 @@ var symbols = {
       fill: ['rgba(43,218,181,0.90)'],
       c: [
       {
+         transform: {},
          rect: ['35','40','200','25','undefined','undefined'],
          borderRadius: ['10px','10px','10px','10px'],
-         transform: {},
+         boxShadow: ['',3,3,3,0,'rgba(0,0,0,0.65)'],
          id: 'enemyLifeBar',
          stroke: [0,'rgb(0, 0, 0)','none'],
          type: 'rect',
          fill: ['rgba(255,0,0,1.00)']
       },
       {
+         transform: {},
          rect: ['305','39','200','25','undefined','undefined'],
          borderRadius: ['10px','10px','10px','10px'],
-         transform: {},
+         boxShadow: ['',3,3,3,0,'rgba(0,0,0,0.65)'],
          id: 'playerLifeBar',
          stroke: [0,'rgb(0, 0, 0)','none'],
          type: 'rect',
@@ -214,18 +216,89 @@ var symbols = {
          type: 'text',
          tag: 'p'
       }]
+   },
+   {
+      rect: ['109px','122px','321','178','undefined','undefined'],
+      transform: {},
+      id: 'commandMenuArea',
+      stroke: [0,'rgb(240, 41, 121)','none'],
+      type: 'rect',
+      fill: ['rgba(192,192,192,0.00)'],
+      c: [
+      {
+         rect: ['-127','-191','580','559','undefined','undefined'],
+         transform: [{},{},{},['0.468','0.272']],
+         id: 'serif_pink',
+         boxShadow: ['',0,0,0,0,'rgba(0,0,0,0)'],
+         type: 'image',
+         fill: ['rgba(0,0,0,0)','images/serif_pink.png']
+      },
+      {
+         type: 'rect',
+         borderRadius: ['10px','10px','10px','10px'],
+         id: 'defenceBtn',
+         opacity: 1,
+         cursor: ['pointer'],
+         rect: ['77','74','160','31','undefined','undefined'],
+         transform: {},
+         stroke: [3,'rgb(240, 41, 121)','solid'],
+         fill: ['rgba(241,132,176,1.00)'],
+         c: [
+         {
+            rect: ['-31px','-22px','99','65','undefined','undefined'],
+            id: 'blackcat_stamp2',
+            transform: [{},{},{},['0.444','0.461']],
+            type: 'image',
+            fill: ['rgba(0,0,0,0)','images/blackcat_stamp.png']
+         },
+         {
+            type: 'text',
+            id: 'defenceText',
+            text: 'Defence',
+            cursor: ['pointer'],
+            rect: ['41px','0px','103','0','undefined','undefined'],
+            transform: {},
+            font: ['Spirax, serif',24,'rgba(0,0,0,1.00)','normal','none','normal'],
+            align: 'center',
+            tag: 'p'
+         }]
+      },
+      {
+         type: 'rect',
+         borderRadius: ['10px','10px','10px','10px'],
+         id: 'attackBtn',
+         opacity: 1,
+         cursor: ['pointer'],
+         rect: ['77','30','160','31','undefined','undefined'],
+         transform: {},
+         stroke: [3,'rgb(240, 41, 121)','solid'],
+         fill: ['rgba(241,132,176,1.00)'],
+         c: [
+         {
+            rect: ['-31','-21','99','65','undefined','undefined'],
+            id: 'blackcat_stamp',
+            transform: [{},{},{},['0.444','0.461']],
+            type: 'image',
+            fill: ['rgba(0,0,0,0)','images/blackcat_stamp.png']
+         },
+         {
+            type: 'text',
+            id: 'attackText',
+            text: 'Attack',
+            cursor: ['pointer'],
+            rect: ['41px','0px','103','0','undefined','undefined'],
+            transform: {},
+            font: ['Spirax, serif',24,'rgba(0,0,0,1.00)','normal','none','normal'],
+            align: 'center',
+            tag: 'p'
+         }]
+      }]
    }],
    symbolInstances: [
    ]
    },
    states: {
       "Base State": {
-         "${_enemyText}": [
-            ["style", "top", '0px'],
-            ["style", "opacity", '1'],
-            ["style", "left", '35px'],
-            ["style", "font-family", 'Spirax, serif']
-         ],
          "${_enemyLife}": [
             ["style", "top", '65px'],
             ["style", "text-align", 'right'],
@@ -234,11 +307,136 @@ var symbols = {
             ["style", "left", '35px'],
             ["style", "font-size", '24px']
          ],
+         "${_playerTextCopy}": [
+            ["style", "top", '-24px'],
+            ["style", "opacity", '1'],
+            ["style", "left", '434.99px'],
+            ["style", "font-family", 'Spirax, serif']
+         ],
+         "${_lifeBarArea}": [
+            ["color", "background-color", 'rgba(43,218,181,0.8984)'],
+            ["style", "height", '105px'],
+            ["style", "opacity", '1'],
+            ["style", "left", '0px'],
+            ["style", "top", '0px']
+         ],
+         "${_serif_pink}": [
+            ["style", "top", '-191.25px'],
+            ["transform", "scaleY", '0.27276'],
+            ["transform", "scaleX", '0.46808'],
+            ["style", "left", '-127.56px']
+         ],
+         "${_attackText}": [
+            ["color", "color", 'rgba(0,0,0,1)'],
+            ["style", "opacity", '1'],
+            ["style", "cursor", 'pointer'],
+            ["style", "font-size", '24px'],
+            ["style", "top", '0.38px'],
+            ["style", "text-align", 'center'],
+            ["style", "width", '103px'],
+            ["transform", "scaleX", '1'],
+            ["style", "font-family", 'Spirax, serif'],
+            ["style", "text-decoration", 'none'],
+            ["style", "left", '41px']
+         ],
+         "${_playerLifeBar}": [
+            ["style", "-webkit-transform-origin", [0,50], {valueTemplate:'@@0@@% @@1@@%'} ],
+            ["style", "-moz-transform-origin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "-ms-transform-origin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "msTransformOrigin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "-o-transform-origin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["subproperty", "boxShadow.blur", '3px'],
+            ["transform", "scaleX", '1'],
+            ["style", "left", '305px'],
+            ["style", "width", '200px'],
+            ["style", "top", '39.99px'],
+            ["transform", "scaleY", '1'],
+            ["subproperty", "boxShadow.color", 'rgba(0,0,0,0.65)'],
+            ["style", "height", '25px'],
+            ["subproperty", "boxShadow.offsetV", '3px'],
+            ["subproperty", "boxShadow.offsetH", '3px'],
+            ["color", "background-color", 'rgba(255,0,0,1)']
+         ],
+         "${symbolSelector}": [
+            ["style", "height", '300px'],
+            ["style", "width", '540px']
+         ],
+         "${_enemyLifeBar}": [
+            ["style", "-webkit-transform-origin", [100,50], {valueTemplate:'@@0@@% @@1@@%'} ],
+            ["style", "-moz-transform-origin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "-ms-transform-origin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "msTransformOrigin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "-o-transform-origin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["subproperty", "boxShadow.blur", '3px'],
+            ["transform", "scaleX", '1'],
+            ["style", "left", '35px'],
+            ["style", "width", '200px'],
+            ["style", "top", '40px'],
+            ["transform", "scaleY", '1'],
+            ["subproperty", "boxShadow.color", 'rgba(0,0,0,0.65)'],
+            ["style", "height", '25px'],
+            ["subproperty", "boxShadow.offsetV", '3px'],
+            ["subproperty", "boxShadow.offsetH", '3px'],
+            ["color", "background-color", 'rgba(255,0,0,1)']
+         ],
+         "${_blackcat_stamp}": [
+            ["style", "top", '-20.5px'],
+            ["transform", "scaleY", '0.46153'],
+            ["transform", "scaleX", '0.44444'],
+            ["style", "opacity", '1'],
+            ["style", "left", '-30.5px']
+         ],
+         "${_defenceText}": [
+            ["color", "color", 'rgba(0,0,0,1)'],
+            ["style", "opacity", '1'],
+            ["style", "cursor", 'pointer'],
+            ["style", "font-size", '24px'],
+            ["style", "top", '0.02px'],
+            ["style", "text-align", 'center'],
+            ["transform", "scaleX", '1'],
+            ["style", "width", '103px'],
+            ["style", "font-family", 'Spirax, serif'],
+            ["style", "text-decoration", 'none'],
+            ["style", "left", '41px']
+         ],
+         "${_enemyText}": [
+            ["style", "top", '0px'],
+            ["style", "opacity", '1'],
+            ["style", "left", '35px'],
+            ["style", "font-family", 'Spirax, serif']
+         ],
          "${_playerText}": [
             ["style", "top", '0px'],
             ["style", "opacity", '1'],
             ["style", "left", '435px'],
             ["style", "font-family", 'Spirax, serif']
+         ],
+         "${_attackBtn}": [
+            ["color", "background-color", 'rgba(241,132,176,1)'],
+            ["transform", "scaleX", '1'],
+            ["style", "border-style", 'solid'],
+            ["style", "border-width", '3px'],
+            ["style", "width", '160px'],
+            ["style", "top", '30.62px'],
+            ["transform", "skewX", '0deg'],
+            ["style", "opacity", '1'],
+            ["color", "border-color", 'rgb(240, 41, 121)'],
+            ["style", "cursor", 'pointer'],
+            ["style", "left", '77px']
+         ],
+         "${_commandMenuArea}": [
+            ["style", "-webkit-transform-origin", [50,50], {valueTemplate:'@@0@@% @@1@@%'} ],
+            ["style", "-moz-transform-origin", [50,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "-ms-transform-origin", [50,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "msTransformOrigin", [50,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["style", "-o-transform-origin", [50,50],{valueTemplate:'@@0@@% @@1@@%'}],
+            ["color", "background-color", 'rgba(192,192,192,0)'],
+            ["transform", "scaleY", '1'],
+            ["style", "top", '122px'],
+            ["style", "height", '178px'],
+            ["style", "opacity", '1'],
+            ["style", "left", '109px'],
+            ["style", "width", '321px']
          ],
          "${_playerLife}": [
             ["style", "top", '65px'],
@@ -248,44 +446,45 @@ var symbols = {
             ["style", "left", '435px'],
             ["style", "font-size", '24px']
          ],
-         "${symbolSelector}": [
-            ["style", "height", '300px'],
-            ["style", "width", '540px']
-         ],
-         "${_enemyLifeBar}": [
-            ["color", "background-color", 'rgba(255,0,0,1)'],
-            ["style", "top", '40px'],
-            ["transform", "scaleY", '1'],
-            ["style", "height", '25px'],
-            ["transform", "scaleX", '1'],
-            ["style", "-webkit-transform-origin", [100,50], {valueTemplate:'@@0@@% @@1@@%'} ],
-            ["style", "-moz-transform-origin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "-ms-transform-origin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "msTransformOrigin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "-o-transform-origin", [100,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "left", '35px'],
-            ["style", "width", '200px']
-         ],
-         "${_playerLifeBar}": [
-            ["color", "background-color", 'rgba(255,0,0,1)'],
-            ["style", "-webkit-transform-origin", [0,50], {valueTemplate:'@@0@@% @@1@@%'} ],
-            ["style", "-moz-transform-origin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "-ms-transform-origin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "msTransformOrigin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["style", "-o-transform-origin", [0,50],{valueTemplate:'@@0@@% @@1@@%'}],
-            ["transform", "scaleY", '1'],
-            ["style", "top", '39.99px'],
-            ["transform", "scaleX", '1'],
-            ["style", "height", '25px'],
-            ["style", "left", '305px'],
-            ["style", "width", '200px']
-         ],
-         "${_lifeBarArea}": [
-            ["color", "background-color", 'rgba(43,218,181,0.8984)'],
-            ["style", "height", '105px'],
+         "${_enemyTextCopy}": [
+            ["style", "top", '-24px'],
             ["style", "opacity", '1'],
-            ["style", "left", '0px'],
-            ["style", "top", '0px']
+            ["style", "left", '35px'],
+            ["style", "font-family", 'Spirax, serif']
+         ],
+         "${_playerLifeCopy}": [
+            ["style", "top", '41px'],
+            ["style", "font-family", 'Peralta, serif'],
+            ["style", "opacity", '1'],
+            ["style", "left", '435px'],
+            ["style", "font-size", '24px']
+         ],
+         "${_defenceBtn}": [
+            ["color", "background-color", 'rgba(241,132,176,1)'],
+            ["transform", "scaleX", '1'],
+            ["style", "border-style", 'solid'],
+            ["style", "border-width", '3px'],
+            ["style", "width", '160px'],
+            ["style", "top", '74.99px'],
+            ["transform", "skewX", '0deg'],
+            ["style", "cursor", 'pointer'],
+            ["color", "border-color", 'rgb(240, 41, 121)'],
+            ["style", "opacity", '1'],
+            ["style", "left", '77px']
+         ],
+         "${_enemyLifeCopy}": [
+            ["style", "top", '41px'],
+            ["style", "font-family", 'Peralta, serif'],
+            ["style", "opacity", '1'],
+            ["style", "left", '35px'],
+            ["style", "font-size", '24px']
+         ],
+         "${_blackcat_stamp2}": [
+            ["style", "top", '-22.48px'],
+            ["transform", "scaleY", '0.46153'],
+            ["transform", "scaleX", '0.44444'],
+            ["style", "opacity", '1'],
+            ["style", "left", '-30.5px']
          ]
       }
    },
