@@ -41,6 +41,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'catAnimation_black'
    (function(symbolName) {   
    
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         sym.play("waiting");
+
+      });
+      //Edge binding end
+
    })("blackcatSprite");
    //Edge symbol end:'blackcatSprite'
 
@@ -49,6 +55,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'blackcatSprite_1'
    (function(symbolName) {   
    
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         sym.play("waiting");
+
+      });
+      //Edge binding end
+
       })("whitecatSprite");
    //Edge symbol end:'whitecatSprite'
 
