@@ -293,9 +293,17 @@ var symbols = {
             tag: 'p'
          }]
       }]
+   },
+   {
+      id: 'catAnimation_black',
+      type: 'rect',
+      rect: ['-426','210','auto','auto','auto','auto']
    }],
    symbolInstances: [
-   ]
+   {
+      id: 'catAnimation_black',
+      symbolName: 'catAnimation_black'
+   }   ]
    },
    states: {
       "Base State": {
@@ -495,7 +503,82 @@ var symbols = {
          duration: 0,
          autoPlay: true,
          timeline: [
+            { id: "eid26", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['play', '${_catAnimation_black}', [] ], ""], position: 0 }         ]
+      }
+   }
+},
+"catAnimation_black": {
+   version: "0.1.7",
+   minimumCompatibleVersion: "0.1.7",
+   build: "0.11.0.164",
+   baseState: "Base State",
+   initialState: "Base State",
+   gpuAccelerate: false,
+   resizeInstances: false,
+   content: {
+   dom: [
+   {
+      rect: ['867px','1px','512px','503px','auto','auto'],
+      id: 'blackcat',
+      type: 'image',
+      clip: ['rect(0px 100px 503px 0px)'],
+      fill: ['rgba(0,0,0,0)','images/blackcat.png','0px','0px']
+   },
+   {
+      rect: ['15px','0px','512px','503px','auto','auto'],
+      transform: [{},{},{},['-1']],
+      id: 'whitecat',
+      type: 'image',
+      clip: ['rect(0px 80px 503px 0px)'],
+      fill: ['rgba(0,0,0,0)','images/whitecat.png','0px','0px']
+   }],
+   symbolInstances: [
+   ]
+   },
+   states: {
+      "Base State": {
+         "${_blackcat}": [
+            ["style", "top", '1px'],
+            ["style", "background-position", [0,0], {valueTemplate:'@@0@@px @@1@@px'} ],
+            ["style", "left", '866.9px'],
+            ["style", "clip", [0,80,503,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ]
+         ],
+         "${symbolSelector}": [
+            ["style", "height", '504px'],
+            ["style", "width", '1390.9333494023px']
+         ],
+         "${_whitecat}": [
+            ["style", "top", '0px'],
+            ["transform", "scaleX", '-1'],
+            ["style", "background-position", [0,0], {valueTemplate:'@@0@@px @@1@@px'} ],
+            ["style", "left", '15.21px'],
+            ["style", "clip", [0,80,503,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ]
          ]
+      }
+   },
+   timelines: {
+      "Default Timeline": {
+         fromState: "Base State",
+         toState: "",
+         duration: 2000,
+         autoPlay: false,
+         timeline: [
+            { id: "eid10", tween: [ "style", "${_blackcat}", "clip", [0,80,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,503,0]}], position: 250, duration: 0 },
+            { id: "eid11", tween: [ "style", "${_blackcat}", "clip", [0,100,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,503,0]}], position: 500, duration: 0 },
+            { id: "eid13", tween: [ "style", "${_blackcat}", "clip", [0,100,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,503,0]}], position: 750, duration: 0 },
+            { id: "eid15", tween: [ "style", "${_blackcat}", "clip", [0,100,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,503,0]}], position: 1000, duration: 0 },
+            { id: "eid18", tween: [ "style", "${_whitecat}", "background-position", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 1250, duration: 0 },
+            { id: "eid19", tween: [ "style", "${_whitecat}", "background-position", [-205,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 1500, duration: 0 },
+            { id: "eid21", tween: [ "style", "${_whitecat}", "background-position", [-90,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [-205,0]}], position: 1750, duration: 0 },
+            { id: "eid24", tween: [ "style", "${_whitecat}", "background-position", [-300,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [-90,0]}], position: 2000, duration: 0 },
+            { id: "eid17", tween: [ "style", "${_whitecat}", "clip", [0,80,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,503,0]}], position: 1250, duration: 0 },
+            { id: "eid20", tween: [ "style", "${_whitecat}", "clip", [0,100,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,503,0]}], position: 1500, duration: 0 },
+            { id: "eid22", tween: [ "style", "${_whitecat}", "clip", [0,100,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,503,0]}], position: 1750, duration: 0 },
+            { id: "eid25", tween: [ "style", "${_whitecat}", "clip", [0,100,503,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,503,0]}], position: 2000, duration: 0 },
+            { id: "eid1", tween: [ "style", "${_blackcat}", "background-position", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 250, duration: 0 },
+            { id: "eid2", tween: [ "style", "${_blackcat}", "background-position", [-205,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 500, duration: 0 },
+            { id: "eid12", tween: [ "style", "${_blackcat}", "background-position", [-90,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [-205,0]}], position: 750, duration: 0 },
+            { id: "eid14", tween: [ "style", "${_blackcat}", "background-position", [-300,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [-90,0]}], position: 1000, duration: 0 }         ]
       }
    }
 }
