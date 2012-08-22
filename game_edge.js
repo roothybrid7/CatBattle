@@ -24,14 +24,14 @@ var symbols = {
    content: {
          dom: [
          {
-            id:'backgroundArea',
+            id:'background',
             type:'rect',
             rect:['0','0','auto','auto','auto','auto']
          }],
          symbolInstances: [
          {
-            id:'backgroundArea',
-            symbolName:'backgroundArea'
+            id:'background',
+            symbolName:'background'
          }
          ]
       },
@@ -55,7 +55,7 @@ var symbols = {
       }
    }
 },
-"backgroundArea": {
+"background": {
    version: "0.1.7",
    minimumCompatibleVersion: "0.1.7",
    build: "0.11.0.164",

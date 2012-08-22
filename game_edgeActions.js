@@ -20,7 +20,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'backgroundArea'
    (function(symbolName) {
 
-   })("backgroundArea");
-   //Edge symbol end:'backgroundArea'
+   })("background");
+   //Edge symbol end:'background'
 
 })(jQuery, AdobeEdge, "EDGE-6391929");
