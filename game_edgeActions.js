@@ -36,7 +36,15 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'catAnimation_black'
    (function(symbolName) {   
    
-   })("catAnimation_black");
-   //Edge symbol end:'catAnimation_black'
+   })("blackcatSprite");
+   //Edge symbol end:'blackcatSprite'
+
+   //=========================================================
+   
+   //Edge symbol: 'blackcatSprite_1'
+   (function(symbolName) {   
+   
+      })("whitecatSprite");
+   //Edge symbol end:'whitecatSprite'
 
 })(jQuery, AdobeEdge, "EDGE-6391929");

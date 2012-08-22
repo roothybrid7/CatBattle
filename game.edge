@@ -1,30 +1,53 @@
 {
 
-	"HTMLFileName":"game.html",
-	"game-Default Timeline_playhead_ms":"0",
+	"catAnimation_black-Default Timeline_playhead_ms":"0",
+	"catAnimation_black-Default Timeline_mark_ms":"-1",
 	"background-Default Timeline_playhead_ms":"0",
 	"ModelData":"{\
 \"stage\": {\
    \"timelines\": {\
       \"Default Timeline\": {\
             \"ElementKeyframes\": {\
+                \"${_whitecat}\": [], \
                 \"${_game}\": [], \
-                \"${_blackcat}\": [], \
-                \"${_backgroundArea}\": [], \
                 \"${_Stage}\": [], \
-                \"${_Rectangle}\": [], \
+                \"${_blackcat}\": [], \
                 \"${_background}\": [], \
-                \"${_background2}\": []\
+                \"body\": []\
             }\
       }\
    }},\
 \"background\": {\
    \"timelines\": {\
       \"Default Timeline\": {\
+      }\
+   }},\
+\"game\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
             \"ElementKeyframes\": {\
-                \"${_fight_bg}\": [], \
-                \"${_headerDebugArea}\": [], \
-                \"${_contentDebugArea}\": []\
+                \"${_defenceText}\": [], \
+                \"${_enemyLife}\": [], \
+                \"${_lifeBarArea}\": [], \
+                \"${_attackBtn}\": [], \
+                \"${_commandMenuArea}\": [], \
+                \"${_playerLife}\": [], \
+                \"${_serif_pink}\": [], \
+                \"${_attackText}\": [], \
+                \"${_defenceBtn}\": [], \
+                \"${_catAnimation_black}\": [], \
+                \"${_blackcat_stamp}\": [], \
+                \"${_blackcat_stamp2}\": []\
+            }\
+      }\
+   }},\
+\"blackcatSprite\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+            \"ElementKeyframes\": {\
+                \"${_blackcat}\": [], \
+                \"${symbolSelector}\": [], \
+                \"${_whitecat}\": []\
             }\
       }\
    }},\
@@ -36,54 +59,33 @@
    \"timelines\": {\
 \
    }},\
-\"game\": {\
+\"whitecatSprite\": {\
    \"timelines\": {\
       \"Default Timeline\": {\
             \"ElementKeyframes\": {\
-                \"${_enemyLife}\": [], \
-                \"${_playerTextCopy}\": [], \
-                \"${_lifeBarArea}\": [], \
-                \"${_lifeBarAreaCopy}\": [], \
-                \"${_serif_pink}\": [], \
-                \"${_attackText}\": [], \
-                \"${_playerLifeBar}\": [], \
-                \"${_enemyLifeBar}\": [], \
-                \"${_Rectangle}\": [], \
-                \"${_playerLifeBarCopy}\": [], \
-                \"${_blackcat_stamp}\": [], \
-                \"${_defenceText}\": [], \
-                \"${_defenceBtn}\": [], \
-                \"${_enemyText}\": [], \
-                \"${_blackcat2}\": [], \
                 \"${_blackcat}\": [], \
-                \"${_enemyLifeBarCopy}\": [], \
-                \"${_playerText}\": [], \
-                \"${_attackBtn}\": [], \
-                \"${_commandMenuArea}\": [], \
-                \"${_playerLife}\": [], \
-                \"${_enemyTextCopy}\": [], \
                 \"${_whitecat}\": [], \
-                \"${_playerLifeCopy}\": [], \
-                \"${_catAnimation_black}\": [], \
-                \"${_enemyLifeCopy}\": [], \
-                \"${_blackcat_stamp2}\": []\
-            }\
-      }\
-   }},\
-\"catAnimation_black\": {\
-   \"timelines\": {\
-      \"Default Timeline\": {\
-            \"ElementKeyframes\": {\
-                \"${_blackcat}\": [], \
-                \"${_whitecat}\": []\
+                \"${symbolSelector}\": []\
             }\
       }\
    }}\
 }",
+	"whitecatSprite-Default Timeline_playhead_ms":"0",
+	"HTMLFileName":"game.html",
+	"game-Default Timeline_playhead_ms":"0",
 	"backgroundArea-Default Timeline_playhead_ms":"0",
-	"catAnimation_black-Default Timeline_mark_ms":"-1",
+	"game-Default Timeline_mark_ms":"-1",
 	"pref__general__codeView":"sectionalView",
-	"pref__general__AutoKeyframeProperties":"true",
+	"symbol_whitecatSprite":{
+		"dummyStageParentWidth":"640px",
+		"dummyStageParentHeight":"400px",
+		"defaultStageParentWidth":"640px",
+		"element_${_whitecat}":{
+			"timelineColor2":"0xba5b89",
+			"animationEnabled":"true",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d"},
+		"defaultStageParentHeight":"400px"},
 	"pref__general__FilterNonAnimatedElements":"false",
 	"symbol_game":{
 		"element_${_playerLifeCopy}":{
@@ -104,33 +106,27 @@
 			"timelineColor":"0x008dc8"},
 		"element_${_commandMenuArea}":{
 			"epOpened":"false",
-			"timelineColor3":"0x734a5f",
-			"timelineColor":"0xdb619d",
 			"invisible":"true",
-			"timelineColor2":"0xba5b89"},
+			"timelineColor":"0xdb619d",
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f"},
 		"element_${_playerLifeBarCopy}":{
 			"timelineColor2":"0xb099ce",
 			"timelineColor3":"0x70657c",
 			"timelineColor":"0xceaef4"},
-		"element_${_blackcat}":{
-			"timelineColor2":"0x1095d2",
-			"timelineColor3":"0x29647e",
-			"animationEnabled":"false",
-			"timelineColor":"0x00a9fa"},
+		"element_${_enemyLife}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d"},
+		"element_${_enemyTextCopy}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f"},
 		"element_${_whitecat}":{
 			"timelineColor2":"0x107faa",
 			"timelineColor3":"0x295a6d",
 			"animationEnabled":"false",
 			"timelineColor":"0x008dc8"},
-		"element_${_enemyTextCopy}":{
-			"timelineColor2":"0x5a558a",
-			"timelineColor3":"0x4a485e",
-			"timelineColor":"0x63599f"},
-		"element_${_Rectangle}":{
-			"timelineColor2":"0xb099ce",
-			"timelineColor3":"0x70657c",
-			"animationEnabled":"false",
-			"timelineColor":"0xceaef4"},
 		"element_${_lifeBarAreaCopy}":{
 			"timelineColor2":"0x168c84",
 			"timelineColor3":"0x2a605c",
@@ -138,71 +134,77 @@
 		"element_${_catAnimation_black}":{
 			"timelineColor2":"0x5a558a",
 			"timelineColor3":"0x4a485e",
-			"animationEnabled":"true",
+			"animationEnabled":"false",
 			"timelineColor":"0x63599f"},
+		"element_${_enemyLifeBarCopy}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a"},
+		"element_${_enemyLifeBar}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
+		"element_${_blackcat_stamp2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"element_${_enemyText}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767"},
 		"element_${_attackBtn}":{
 			"timelineColor2":"0xd8b467",
 			"timelineColor3":"0x81714f",
 			"epOpened":"false",
 			"timelineColor":"0xffd46d"},
-		"element_${_serif_pink}":{
-			"timelineColor2":"0x326a96",
-			"timelineColor3":"0x385063",
-			"timelineColor":"0x2f73ad"},
-		"element_${_defenceText}":{
-			"timelineColor2":"0x1aa38f",
-			"timelineColor3":"0x2a6a61",
-			"timelineColor":"0x00bda4"},
-		"element_${_enemyText}":{
-			"timelineColor2":"0x81aa62",
-			"timelineColor3":"0x5b6c4d",
-			"timelineColor":"0x91c767"},
-		"element_${_playerText}":{
-			"timelineColor2":"0xcbbd71",
-			"timelineColor3":"0x7b7652",
-			"timelineColor":"0xeedf79"},
 		"element_${_playerLifeBar}":{
 			"timelineColor2":"0x4fa275",
 			"timelineColor3":"0x456a55",
 			"timelineColor":"0x50bd82"},
-		"element_${_blackcat_stamp2}":{
-			"timelineColor2":"0x168c84",
-			"timelineColor3":"0x2a605c",
-			"timelineColor":"0x00a096"},
-		"element_${_defenceBtn}":{
-			"timelineColor2":"0x4fa275",
-			"timelineColor3":"0x456a55",
-			"epOpened":"false",
-			"timelineColor":"0x50bd82"},
+		"element_${_serif_pink}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad"},
+		"element_${_attackText}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${_defenceText}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
 		"element_${_lifeBarArea}":{
 			"timelineColor2":"0xd35d6e",
 			"timelineColor3":"0x7e4b52",
 			"epOpened":"false",
 			"timelineColor":"0xfb657a"},
-		"element_${_attackText}":{
-			"timelineColor2":"0xcbbd71",
-			"timelineColor3":"0x7b7652",
-			"timelineColor":"0xeedf79"},
+		"element_${_defenceBtn}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"epOpened":"false",
+			"timelineColor":"0x50bd82"},
 		"element_${_playerLife}":{
 			"timelineColor2":"0xba5b89",
 			"timelineColor3":"0x734a5f",
 			"timelineColor":"0xdb619d"},
-		"element_${_enemyLifeBar}":{
-			"timelineColor2":"0x1aa38f",
-			"timelineColor3":"0x2a6a61",
-			"timelineColor":"0x00bda4"},
-		"element_${_enemyLifeBarCopy}":{
-			"timelineColor2":"0xd35d6e",
-			"timelineColor3":"0x7e4b52",
-			"timelineColor":"0xfb657a"},
-		"element_${_enemyLife}":{
-			"timelineColor2":"0xd8b467",
-			"timelineColor3":"0x81714f",
-			"timelineColor":"0xffd46d"}},
-	"stage-Default Timeline_playhead_ms":"0",
-	"viewStartMs":"-25",
-	"pref__general__AutoKeyframePropertiesArmed":"true",
+		"element_${_playerText}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${_blackcat}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a9fa"},
+		"element_${_Rectangle}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"false",
+			"timelineColor":"0xceaef4"}},
+	"pref__general__AutoKeyframeProperties":"false",
 	"pref__general__GenerateSmoothTransitions":"false",
+	"pref__general__AutoKeyframePropertiesArmed":"true",
+	"game-Default Timeline_playhead_anchor_ms":"0",
 	"symbol_stage":{
 		"dummyStageParentWidth":"640px",
 		"element_${_background}":{
@@ -236,42 +238,46 @@
 			"timelineColor3":"0x295a6d",
 			"animationEnabled":"false",
 			"timelineColor":"0x008dc8"}},
-	"TransitionIdCounter":"26",
+	"TransitionIdCounter":"44",
 	"CompZoomFactor":"100",
 	"StageZoomFactor":"100",
 	"pixelsPerMs":"0.2",
-	"symbol_catAnimation_black":{
-		"element_${_whitecat}":{
-			"timelineColor2":"0xb099ce",
-			"timelineColor3":"0x70657c",
-			"animationEnabled":"true",
-			"timelineColor":"0xceaef4"},
-		"element_${_blackcat}":{
-			"timelineColor2":"0xd35d6e",
-			"timelineColor3":"0x7e4b52",
-			"animationEnabled":"true",
-			"timelineColor":"0xfb657a"}},
-	"catAnimation_black-Default Timeline_playhead_ms":"0",
-	"usedBOM":"false",
-	"nextElementColorIndex":"12",
-	"pref__general__TimelineShowGrid":"true",
+	"viewStartY":"0",
 	"symbol_background":{
-		"element_${_fight_bg}":{
-			"timelineColor2":"0x1aa38f",
-			"timelineColor3":"0x2a6a61",
-			"locked":"true",
-			"timelineColor":"0x00bda4"},
 		"defaultStageParentHeight":"400px",
+		"dummyStageParentWidth":"640px",
 		"dummyStageParentHeight":"400px",
 		"defaultStageParentWidth":"640px",
-		"element_${_contentDebugArea}":{
-			"timelineColor2":"0x81aa62",
-			"timelineColor3":"0x5b6c4d",
-			"timelineColor":"0x91c767"},
 		"element_${_headerDebugArea}":{
 			"timelineColor2":"0x4fa275",
 			"timelineColor3":"0x456a55",
 			"timelineColor":"0x50bd82"},
+		"element_${_contentDebugArea}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767"},
+		"element_${_fight_bg}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"locked":"true",
+			"timelineColor":"0x00bda4"}},
+	"usedBOM":"false",
+	"nextElementColorIndex":"13",
+	"stage-Default Timeline_playhead_ms":"0",
+	"pref__general__TimelineShowGrid":"true",
+	"symbol_blackcatSprite":{
+		"defaultStageParentHeight":"400px",
+		"dummyStageParentHeight":"400px",
+		"defaultStageParentWidth":"640px",
+		"element_${_blackcat}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"true",
+			"timelineColor":"0xfb657a"},
+		"element_${_whitecat}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"false",
+			"timelineColor":"0xceaef4"},
 		"dummyStageParentWidth":"640px"},
-	"viewStartY":"0",
 	"catAnimation_black-Default Timeline_playhead_anchor_ms":"-1"}
