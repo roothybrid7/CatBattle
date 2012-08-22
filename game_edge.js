@@ -23,9 +23,16 @@ var symbols = {
    resizeInstances: false,
    content: {
          dom: [
-],
+         {
+            id:'backgroundArea',
+            type:'rect',
+            rect:['0','0','auto','auto','auto','auto']
+         }],
          symbolInstances: [
-
+         {
+            id:'backgroundArea',
+            symbolName:'backgroundArea'
+         }
          ]
       },
    states: {
@@ -59,28 +66,28 @@ var symbols = {
    content: {
    dom: [
    {
-      transform: [[0,0],{},{},['0.661','0.429']],
+      rect: ['-163','-265','967','931','undefined','undefined'],
       id: 'fight_bg',
+      transform: [{},{},{},['0.661','0.429']],
       type: 'image',
-      rect: [-163,-265,'967','931','undefined','undefined'],
       fill: ['rgba(0,0,0,0)','images/fight_bg.png']
    },
    {
-      transform: [[0,0]],
-      rect: [50,10,'540','105','undefined','undefined'],
-      type: 'rect',
-      id: 'headerDebugArea',
+      rect: ['50','10','540','105','undefined','undefined'],
+      transform: {},
       stroke: [0,'rgba(0,0,0,1)','none'],
+      id: 'headerDebugArea',
       opacity: 0.3,
+      type: 'rect',
       fill: ['rgba(43,218,181,1.00)']
    },
    {
-      transform: [[0,0]],
-      rect: ['50',85,'540','225','undefined','undefined'],
-      type: 'rect',
-      id: 'contentDebugArea',
+      rect: ['50','85','540','225','undefined','undefined'],
+      transform: {},
       stroke: [0,'rgb(0, 0, 0)','none'],
+      id: 'contentDebugArea',
       opacity: 0.3,
+      type: 'rect',
       fill: ['rgba(192,192,192,1.00)']
    }],
    symbolInstances: [
@@ -88,6 +95,10 @@ var symbols = {
    },
    states: {
       "Base State": {
+         "${symbolSelector}": [
+            ["style", "height", '399.99484px'],
+            ["style", "width", '639.99928px']
+         ],
          "${_headerDebugArea}": [
             ["color", "background-color", 'rgba(43,218,181,1.00)'],
             ["style", "top", '10px'],
@@ -107,10 +118,6 @@ var symbols = {
             ["style", "top", '-265.5px'],
             ["transform", "scaleY", '0.42964'],
             ["style", "left", '-163.5px']
-         ],
-         "${symbolSelector}": [
-            ["style", "height", '399.99484px'],
-            ["style", "width", '639.99928px']
          ]
       }
    },
