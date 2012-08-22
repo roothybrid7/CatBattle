@@ -293,9 +293,17 @@ var symbols = {
             tag: 'p'
          }]
       }]
+   },
+   {
+      id: 'blackcatSprite',
+      type: 'rect',
+      rect: ['auto','auto','auto','auto','0px','0px']
    }],
    symbolInstances: [
-   ]
+   {
+      id: 'blackcatSprite',
+      symbolName: 'blackcatSprite'
+   }   ]
    },
    states: {
       "Base State": {
@@ -378,6 +386,12 @@ var symbols = {
             ["subproperty", "boxShadow.offsetV", '3px'],
             ["subproperty", "boxShadow.offsetH", '3px'],
             ["subproperty", "boxShadow.color", 'rgba(0,0,0,0.65)']
+         ],
+         "${_blackcatSprite}": [
+            ["style", "top", 'auto'],
+            ["style", "right", '0px'],
+            ["style", "left", 'auto'],
+            ["style", "bottom", '0px']
          ],
          "${_blackcat_stamp}": [
             ["style", "top", '-20.5px'],

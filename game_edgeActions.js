@@ -28,6 +28,11 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'game'
    (function(symbolName) {   
    
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 0, function(sym, e) {
+
+      });
+      //Edge binding end
+
    })("game");
    //Edge symbol end:'game'
 
