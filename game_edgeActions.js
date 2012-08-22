@@ -23,4 +23,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    })("background");
    //Edge symbol end:'background'
 
+   //=========================================================
+   
+   //Edge symbol: 'game'
+   (function(symbolName) {   
+   
+   })("game");
+   //Edge symbol end:'game'
+
 })(jQuery, AdobeEdge, "EDGE-6391929");

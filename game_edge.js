@@ -27,8 +27,17 @@ var symbols = {
             id:'background',
             type:'rect',
             rect:['0','0','auto','auto','auto','auto']
+         },
+         {
+            id:'game',
+            type:'rect',
+            rect:['50','10','auto','auto','auto','auto']
          }],
          symbolInstances: [
+         {
+            id:'game',
+            symbolName:'game'
+         },
          {
             id:'background',
             symbolName:'background'
@@ -118,6 +127,35 @@ var symbols = {
             ["style", "top", '-265.5px'],
             ["transform", "scaleY", '0.42964'],
             ["style", "left", '-163.5px']
+         ]
+      }
+   },
+   timelines: {
+      "Default Timeline": {
+         fromState: "Base State",
+         toState: "",
+         duration: 0,
+         autoPlay: true,
+         timeline: [
+         ]
+      }
+   }
+},
+"game": {
+   version: "0.1.7",
+   minimumCompatibleVersion: "0.1.7",
+   build: "0.11.0.164",
+   baseState: "Base State",
+   initialState: "Base State",
+   gpuAccelerate: false,
+   resizeInstances: false,
+   content: {
+   },
+   states: {
+      "Base State": {
+         "${symbolSelector}": [
+            ["style", "height", '300px'],
+            ["style", "width", '540px']
          ]
       }
    },
