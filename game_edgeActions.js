@@ -23,7 +23,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          // カラー選択
          //game.stop("playerWhite");
          var catAnimation = game.getSymbol("catAnimation");
-         //catAnimation.play();
+         catAnimation.play();
 
       });
       //Edge binding end
@@ -31,7 +31,27 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
          // TODO: Define functions and object.
          
-         // b: blackcat, w: whitecat.
+         /**
+          * Cat color prefix.
+          * @type {Object.<string, string>}
+          */
+         var COLORS = {
+           blackcat: "b",
+           whitecat: "w"
+         };
+         
+         /**
+          * Cat charactor object.
+          * @param {string} color
+          *     A cat color[blackcat, whitecat].
+          * @constructor
+          */
+         function Cat(color) {
+           this.suffix = COLORS[color] || COLORS.blackcat;
+           this.hp = 3000;
+           this.power = 300;
+           this.guard = 200;
+         }
          
          function playerActionNotify(action) {
            var game = sym.getSymbol("game");
@@ -152,13 +172,20 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 250, function(sym, e) {
          // 繰り返しアニメーション 猫待機状態
-         sym.getSymbol("whitecat").play("waiting");
-         sym.getSymbol("blackcat").play("waiting");
+         var whitecat = sym.getSymbol("whitecat"),
+             blackcat = sym.getSymbol("blackcat");
+         
+         if (!whitecat.isPlaying()) {
+           whitecat.play("waiting");
+         }
+         if (!blackcat.isPlaying()) {
+           blackcat.play("waiting");
+         }
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1000, function(sym, e) {
          // 黒猫の攻撃アニメーション
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").play("waiting");
@@ -166,14 +193,14 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 583, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1083, function(sym, e) {
          // 黒猫の攻撃アニメーション2: running.
          sym.getSymbol("blackcat").stop("running");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1167, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1667, function(sym, e) {
          // 黒猫の攻撃アニメーション: 相対
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").stop("standup");
@@ -181,7 +208,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2500, function(sym, e) {
          // 黒猫の攻撃: ヒット
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").stop("standing");
@@ -191,7 +218,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 3500, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4000, function(sym, e) {
          // 黒猫の攻撃: ミス
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").stop("standup");
@@ -201,52 +228,52 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 3583, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4083, function(sym, e) {
          // 白猫かわす
          sym.getSymbol("whitecat").stop("sitting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4083, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4583, function(sym, e) {
          sym.getSymbol("whitecat").stop("standup");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4500, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5000, function(sym, e) {
          sym.getSymbol("whitecat").stop("sitting");
          sym.play("runback_b");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5000, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5500, function(sym, e) {
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").play("waiting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5083, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5583, function(sym, e) {
          sym.getSymbol("blackcat").stop("running");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5667, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 6167, function(sym, e) {
          sym.getSymbol("blackcat").stop("sitting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5756, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 6500, function(sym, e) {
          sym.getSymbol("blackcat").play("waiting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 6500, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 7000, function(sym, e) {
          // 白猫の攻撃アニメーション開始
          sym.getSymbol("whitecat").stop("standup");
          sym.getSymbol("blackcat").play("waiting");
@@ -254,14 +281,14 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 6583, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 7083, function(sym, e) {
          // 猫の攻撃アニメーション2: running.
          sym.getSymbol("whitecat").stop("running");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 7167, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 7667, function(sym, e) {
          // 猫の攻撃アニメーション: 相対
          sym.getSymbol("whitecat").stop("standup");
          sym.getSymbol("blackcat").stop("standup");
@@ -269,7 +296,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 8000, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 8500, function(sym, e) {
 // 猫の攻撃: ヒット
 sym.getSymbol("whitecat").stop("standup");
 sym.getSymbol("blackcat").stop("standing");
@@ -277,7 +304,7 @@ sym.getSymbol("blackcat").stop("standing");
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 9500, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10000, function(sym, e) {
          // 猫の攻撃: ミス
          sym.getSymbol("whitecat").stop("standup");
          sym.getSymbol("blackcat").stop("standup");
@@ -285,75 +312,72 @@ sym.getSymbol("blackcat").stop("standing");
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 9583, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10083, function(sym, e) {
          // 猫かわす
          sym.getSymbol("blackcat").stop("sitting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10083, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10583, function(sym, e) {
          sym.getSymbol("blackcat").stop("standup");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10500, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11000, function(sym, e) {
          sym.getSymbol("blackcat").stop("sitting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11000, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11500, function(sym, e) {
          sym.getSymbol("whitecat").stop("standup");
          sym.getSymbol("blackcat").play("waiting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11083, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11583, function(sym, e) {
          sym.getSymbol("whitecat").stop("running");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11667, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 12167, function(sym, e) {
          sym.getSymbol("whitecat").stop("sitting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11750, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 12500, function(sym, e) {
          sym.getSymbol("whitecat").play("waiting");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2750, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 3250, function(sym, e) {
 sym.play("runback_b");
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 8750, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 9250, function(sym, e) {
 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1250, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
          sym.stop();
+         sym.play("hit_b");
 
       });
       //Edge binding end
 
-      Symbol.bindTimelineAction(compId, symbolName, "Default Timeline", "stop", function(sym, e) {
-         console.log("catAnimation STOP!!");
-         var parent = sym.getParentSymbol();
-         
-         // TODO: stop()した箇所が、各アニメーションの最後の場合、次のアクションを実行する
-         if (sym.getPosition() === sym.getLabelPosition("runEnd_b")) {
-           // TODO: check hit OR miss.
-         }
+      
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+         sym.play("loop");
 
       });
       //Edge binding end
