@@ -14,8 +14,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       
       
       Symbol.bindElementAction(compId, symbolName, "document", "compositionReady", function(sym, e) {
+         // 背景の不透明度を下げる
+         sym.getSymbol("background").$("fight_bg").css({opacity: 0.3});
+         
          // TEST: コードによるアニメーションテスト
          var game = sym.getSymbol("game");
+         game.$("commandMenuArea").hide();
          var catAnimation = game.getSymbol("catAnimation");
          catAnimation.play();
 
