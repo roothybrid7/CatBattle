@@ -6,31 +6,41 @@
 	"backgroundArea-Default Timeline_playhead_ms":"0",
 	"pref__general__codeView":"sectionalView",
 	"pref__general__FilterNonAnimatedElements":"false",
-	"catAnimation-Default Timeline_playhead_anchor_ms":"-1",
+	"catAnimation-Default Timeline_playhead_anchor_ms":"0",
 	"symbol_catAnimation":{
-		"element_${_blackcat_stamp}":{
+		"dummyStageParentHeight":"400px",
+		"element_${_black_stamp}":{
 			"timelineColor2":"0xb099ce",
 			"timelineColor3":"0x70657c",
 			"animationEnabled":"true",
 			"timelineColor":"0xceaef4"},
-		"dummyStageParentHeight":"400px",
 		"element_${_blackcat}":{
 			"timelineColor2":"0x4fa275",
 			"timelineColor3":"0x456a55",
 			"animationEnabled":"true",
 			"timelineColor":"0x50bd82"},
+		"element_${_white_stamp}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"true",
+			"timelineColor":"0xfb657a"},
+		"element_${_whitecat_stampCopy}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"},
 		"defaultStageParentHeight":"400px",
+		"element_${_whitecat}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
 		"element_${_whitecatSprite}":{
 			"timelineColor2":"0x1095d2",
 			"timelineColor3":"0x29647e",
 			"animationEnabled":"true",
 			"timelineColor":"0x00a9fa"},
 		"defaultStageParentWidth":"640px",
-		"element_${_whitecat}":{
-			"timelineColor2":"0x5a558a",
-			"timelineColor3":"0x4a485e",
-			"animationEnabled":"true",
-			"timelineColor":"0x63599f"},
 		"element_${_Rectangle}":{
 			"timelineColor2":"0x81aa62",
 			"timelineColor3":"0x5b6c4d",
@@ -41,8 +51,8 @@
 	"whitecatSprite-Default Timeline_playhead_ms":"0",
 	"CompZoomFactor":"100",
 	"StageZoomFactor":"100",
-	"pixelsPerMs":"0.13007006510828",
-	"nextElementColorIndex":"11",
+	"pixelsPerMs":"0.19877069657942",
+	"nextElementColorIndex":"13",
 	"stage-Default Timeline_playhead_ms":"0",
 	"catAnimation_black-Default Timeline_playhead_anchor_ms":"-1",
 	"HTMLFileName":"game.html",
@@ -52,13 +62,16 @@
    \"timelines\": {\
       \"Default Timeline\": {\
             \"ElementKeyframes\": {\
-                \"${_blackcat_stamp}\": [], \
+                \"${_black_stamp}\": [], \
+                \"${_blackcat}\": [], \
+                \"${_background}\": [], \
+                \"body\": [], \
                 \"${_whitecat}\": [], \
                 \"${_game}\": [], \
                 \"${_Stage}\": [], \
-                \"${_blackcat}\": [], \
-                \"${_background}\": [], \
-                \"body\": []\
+                \"${_whitecat_stamp}\": [], \
+                \"${_blackcat_stamp}\": [], \
+                \"${_white_stamp}\": []\
             }\
       }\
    }},\
@@ -70,6 +83,17 @@
 \"game\": {\
    \"timelines\": {\
       \"Default Timeline\": {\
+            \"ElementKeyframes\": {\
+                \"${_defenceText}\": [], \
+                \"${_catAnimation}\": [], \
+                \"${_attackBtn}\": [], \
+                \"${_commandMenuArea}\": [], \
+                \"${_serif_pink}\": [], \
+                \"${_attackText}\": [], \
+                \"${_defenceBtn}\": [], \
+                \"${_blackcat_stamp}\": [], \
+                \"${_blackcat_stamp2}\": []\
+            }\
       }\
    }},\
 \"blackcatSprite\": {\
@@ -81,9 +105,13 @@
    \"timelines\": {\
       \"Default Timeline\": {\
             \"ElementKeyframes\": {\
+                \"${_black_stamp}\": [], \
+                \"${_whitecat_stampCopy}\": [], \
+                \"${_whitecat}\": [], \
                 \"${_blackcat}\": [], \
+                \"${_whitecat_stamp}\": [], \
                 \"${_blackcat_stamp}\": [], \
-                \"${_whitecat}\": []\
+                \"${_white_stamp}\": []\
             }\
       }\
    }},\
@@ -170,7 +198,7 @@
 			"timelineColor3":"0x7e4b52",
 			"timelineColor":"0xfb657a",
 			"epOpened":"false",
-			"invisible":"true"},
+			"invisible":"false"},
 		"element_${_playerLife}":{
 			"timelineColor2":"0xba5b89",
 			"timelineColor3":"0x734a5f",
@@ -191,7 +219,7 @@
 			"epOpened":"false",
 			"timelineColor3":"0x734a5f",
 			"timelineColor":"0xdb619d",
-			"invisible":"true",
+			"invisible":"false",
 			"timelineColor2":"0xba5b89"},
 		"element_${_defenceBtn}":{
 			"timelineColor2":"0x4fa275",
@@ -301,8 +329,8 @@
 			"timelineColor3":"0x295a6d",
 			"animationEnabled":"false",
 			"timelineColor":"0x008dc8"}},
-	"viewStartMs":"-38.440818786621",
-	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"viewStartMs":"-25.154613260623",
+	"pref__general__AutoKeyframePropertiesArmed":"true",
 	"blackcatSprite-Default Timeline_playhead_anchor_ms":"-1",
 	"symbol_background":{
 		"defaultStageParentHeight":"400px",
@@ -322,7 +350,7 @@
 			"timelineColor3":"0x2a6a61",
 			"locked":"true",
 			"timelineColor":"0x00bda4"}},
-	"TransitionIdCounter":"1792",
+	"TransitionIdCounter":"2063",
 	"game-Default Timeline_playhead_anchor_ms":"-1",
 	"viewStartY":"0",
 	"background-Default Timeline_playhead_ms":"0",
@@ -339,7 +367,7 @@
 			"timelineColor3":"0x295a6d",
 			"timelineColor":"0x008dc8"}},
 	"ShowRulers":"true",
-	"pref__general__GenerateSmoothTransitions":"false",
+	"pref__general__GenerateSmoothTransitions":"true",
 	"blackcatSprite-Default Timeline_playhead_ms":"0",
 	"symbol_blackcatSprite":{
 		"dummyStageParentWidth":"640px",

@@ -70,7 +70,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    
       
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 0, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 250, function(sym, e) {
          // 繰り返しアニメーション 猫待機状態
          sym.getSymbol("whitecat").play("waiting");
          sym.getSymbol("blackcat").play("waiting");
