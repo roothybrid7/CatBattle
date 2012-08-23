@@ -19,15 +19,52 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          
          // TEST: コードによるアニメーションテスト
          var game = sym.getSymbol("game");
-         game.$("commandMenuArea").hide();
+         //game.$("commandMenuArea").hide();
+         // カラー選択
+         //game.stop("playerWhite");
          var catAnimation = game.getSymbol("catAnimation");
-         catAnimation.play();
+         //catAnimation.play();
 
       });
       //Edge binding end
 
       Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
          // TODO: Define functions and object.
+         
+         // b: blackcat, w: whitecat.
+         
+         function playerActionNotify(action) {
+           var game = sym.getSymbol("game");
+           game.setVariable("playerAction", action);
+           game.getVariable("run")();
+         }
+         
+         sym.setVariable("playerActionNotify", playerActionNotify);
+
+      });
+      //Edge binding end
+
+      Symbol.bindElementAction(compId, symbolName, "${_attackBtn}", "click", function(sym, e) {
+         sym.$("commandMenuArea").hide();
+         sym.getVariable("playerActionNotify")("attack");
+         
+         //sym.getSymbol("game").getSymbol("catAnimation").play("run_b");
+         // TODO: get catAnimation and play run.
+         // get player.
+
+      });
+      //Edge binding end
+
+      Symbol.bindElementAction(compId, symbolName, "${_defenceBtn}", "click", function(sym, e) {
+         sym.$("commandMenuArea").hide();
+         sym.getVariable("playerActionNotify")("defence");
+
+      });
+      //Edge binding end
+
+      Symbol.bindElementAction(compId, symbolName, "document", "onError", function(sym, e) {
+         var compId = e.compId;
+         console.log(compId, e, sym, e.originalEvent.target);
 
       });
       //Edge binding end
@@ -50,6 +87,44 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       
 
       
+
+      Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
+         //シンボル変数の値を設定
+         sym.setVariable("playerTurn", true);
+         
+         // TODO:
+         // 1. Check player action and decide enemy action.
+         // 2. player cat animation.
+         // 2.1. Attack
+         // 2.1.1. run
+         // 2.1.2. hit OR miss.
+         // 2.1.3. make label string.(setVariable(miss OR 0000) -> catAnimation);
+         // 2.2. Defence
+         // 2.2.1. nothing animation.
+         // 3. enemy cat animation.
+         // 3.1. Attack
+         // 3.2. Defence
+         function attack() {
+           var playerTurn = sym.getVariable("playerTurn"),
+               player = sym.getParentSymbol().getVariable("player") || "b";
+           if (playerTurn) {
+             sym.getSymbol("catAnimation").play("attack_" + player);
+           }
+           playerTurn = !!!playerTurn;
+           sym.getVariable("playerTurn", playerTurn);
+         }
+         
+         function run() {
+           var playerAction = sym.getVariable("playerAction"),
+               fn = sym.getVariable(playerAction);
+           fn && fn();
+         }
+         
+         sym.setVariable("attack", attack);
+         sym.setVariable("run", run);
+
+      });
+      //Edge binding end
 
    })("game");
    //Edge symbol end:'game'
@@ -110,6 +185,8 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          // 黒猫の攻撃: ヒット
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").stop("standing");
+         
+         // TODO:Set label and animation.
 
       });
       //Edge binding end
@@ -118,6 +195,8 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          // 黒猫の攻撃: ミス
          sym.getSymbol("blackcat").stop("standup");
          sym.getSymbol("whitecat").stop("standup");
+         
+         // Set label and animation.
 
       });
       //Edge binding end
@@ -135,8 +214,9 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4250, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4500, function(sym, e) {
          sym.getSymbol("whitecat").stop("sitting");
+         sym.play("runback_b");
 
       });
       //Edge binding end
@@ -218,7 +298,7 @@ sym.getSymbol("blackcat").stop("standing");
       });
       //Edge binding end
 
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10250, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 10500, function(sym, e) {
          sym.getSymbol("blackcat").stop("sitting");
 
       });
@@ -245,6 +325,35 @@ sym.getSymbol("blackcat").stop("standing");
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11750, function(sym, e) {
          sym.getSymbol("whitecat").play("waiting");
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2750, function(sym, e) {
+sym.play("runback_b");
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 8750, function(sym, e) {
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1250, function(sym, e) {
+         sym.stop();
+
+      });
+      //Edge binding end
+
+      Symbol.bindTimelineAction(compId, symbolName, "Default Timeline", "stop", function(sym, e) {
+         console.log("catAnimation STOP!!");
+         var parent = sym.getParentSymbol();
+         
+         // TODO: stop()した箇所が、各アニメーションの最後の場合、次のアクションを実行する
+         if (sym.getPosition() === sym.getLabelPosition("runEnd_b")) {
+           // TODO: check hit OR miss.
+         }
 
       });
       //Edge binding end
