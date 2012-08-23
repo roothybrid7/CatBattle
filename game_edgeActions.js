@@ -15,7 +15,8 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       
       Symbol.bindElementAction(compId, symbolName, "document", "compositionReady", function(sym, e) {
          // TEST: コードによるアニメーションテスト
-         var catAnimation = sym.getSymbol("game").getSymbol("catAnimation");
+         var game = sym.getSymbol("game");
+         var catAnimation = game.getSymbol("catAnimation");
          catAnimation.play();
 
       });

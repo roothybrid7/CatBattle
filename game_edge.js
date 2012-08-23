@@ -8,6 +8,7 @@ var im='images/';
 var fonts = {};
    fonts['\'Peralta\', serif']='<link href=\'http://fonts.googleapis.com/css?family=Peralta\' rel=\'stylesheet\' type=\'text/css\'>';
    fonts['\'Spirax\', serif']='<link href=\'http://fonts.googleapis.com/css?family=Spirax\' rel=\'stylesheet\' type=\'text/css\'>';
+   fonts['serif']='';
 
 
 var resources = [
@@ -300,7 +301,7 @@ var symbols = {
    {
       id: 'catAnimation',
       type: 'rect',
-      rect: ['0','81','auto','auto','auto','auto']
+      rect: ['0px','80px','auto','auto','auto','auto']
    }],
    symbolInstances: [
    {
@@ -320,7 +321,8 @@ var symbols = {
          ],
          "${_catAnimation}": [
             ["style", "top", '80px'],
-            ["transform", "scaleX", '-1']
+            ["style", "left", '0px'],
+            ["transform", "scaleX", '1']
          ],
          "${_lifeBarArea}": [
             ["color", "background-color", 'rgba(43,218,181,0.8984)'],
@@ -507,10 +509,16 @@ var symbols = {
       "Default Timeline": {
          fromState: "Base State",
          toState: "",
-         duration: 0,
+         duration: 4000,
          autoPlay: true,
+         labels: {
+            "openingEnd": 2000,
+            "playerBlack": 3000,
+            "playerWhite": 4000
+         },
          timeline: [
-            { id: "eid1825", tween: [ "transform", "${_catAnimation}", "scaleX", '-1', { fromValue: '-1'}], position: 0, duration: 0 }         ]
+            { id: "eid2439", tween: [ "transform", "${_catAnimation}", "scaleX", '1', { fromValue: '1'}], position: 3000, duration: 0 },
+            { id: "eid2441", tween: [ "transform", "${_catAnimation}", "scaleX", '-1', { fromValue: '1'}], position: 4000, duration: 0 }         ]
       }
    }
 },
@@ -525,10 +533,10 @@ var symbols = {
    content: {
    dom: [
    {
-      type: 'image',
       rect: ['10px','10px','512px','503px','auto','auto'],
-      id: 'cat',
       transform: {},
+      id: 'cat',
+      type: 'image',
       clip: ['rect(0px 100px 503px 0px)'],
       fill: ['rgba(0,0,0,0)','images/blackcat.png','0px','0px']
    }],
@@ -537,17 +545,17 @@ var symbols = {
    },
    states: {
       "Base State": {
-         "${_defenceText}": [
+         "${_attackText}": [
             ["color", "color", 'rgba(0,0,0,1)'],
             ["style", "opacity", '1'],
             ["style", "cursor", 'pointer'],
             ["style", "font-size", '24px'],
-            ["style", "top", '-23px'],
+            ["style", "top", '-23.99px'],
             ["style", "left", '41.02px'],
-            ["style", "width", '103px'],
+            ["transform", "scaleX", '1'],
             ["style", "font-family", 'Spirax, serif'],
             ["style", "text-decoration", 'none'],
-            ["transform", "scaleX", '1']
+            ["style", "width", '103px']
          ],
          "${_cat}": [
             ["style", "-webkit-transform-origin", [50,18], {valueTemplate:'@@0@@% @@1@@%'} ],
@@ -561,21 +569,21 @@ var symbols = {
             ["style", "clip", [0,80,90,0], {valueTemplate:'rect(@@0@@px @@1@@px @@2@@px @@3@@px)'} ],
             ["style", "top", '10px']
          ],
-         "${_attackText}": [
+         "${symbolSelector}": [
+            ["style", "height", '110px'],
+            ["style", "width", '120px']
+         ],
+         "${_defenceText}": [
             ["color", "color", 'rgba(0,0,0,1)'],
             ["style", "opacity", '1'],
             ["style", "cursor", 'pointer'],
             ["style", "font-size", '24px'],
-            ["style", "top", '-23.99px'],
+            ["style", "top", '-23px'],
             ["style", "left", '41.02px'],
-            ["transform", "scaleX", '1'],
+            ["style", "width", '103px'],
             ["style", "font-family", 'Spirax, serif'],
             ["style", "text-decoration", 'none'],
-            ["style", "width", '103px']
-         ],
-         "${symbolSelector}": [
-            ["style", "height", '110px'],
-            ["style", "width", '120px']
+            ["transform", "scaleX", '1']
          ]
       }
    },
@@ -594,10 +602,10 @@ var symbols = {
          },
          timeline: [
             { id: "eid150", tween: [ "style", "${_cat}", "-webkit-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2063", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2064", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2065", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2066", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2474", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2475", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2476", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2477", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
             { id: "eid10", tween: [ "style", "${_cat}", "clip", [0,80,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,90,0]}], position: 0, duration: 0 },
             { id: "eid11", tween: [ "style", "${_cat}", "clip", [0,100,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,503,0]}], position: 1000, duration: 0 },
             { id: "eid13", tween: [ "style", "${_cat}", "clip", [0,100,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,90,0]}], position: 2000, duration: 0 },
@@ -740,38 +748,7 @@ var symbols = {
             { id: "eid2000", tween: [ "transform", "${_whitecat}", "scaleX", '1', { fromValue: '-1'}], position: 11000, duration: 83 },
             { id: "eid2001", tween: [ "transform", "${_whitecat}", "scaleX", '-1', { fromValue: '1'}], position: 11750, duration: 0 },
             { id: "eid1700", tween: [ "transform", "${_blackcat}", "scaleX", '-1', { fromValue: '1'}], position: 5000, duration: 83 },
-            { id: "eid1705", tween: [ "transform", "${_blackcat}", "scaleX", '1', { fromValue: '-1'}], position: 5750, duration: 0 },
-            { id: "eid1213", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 500 },
-            { id: "eid1227", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['running'] ], ""], position: 750 },
-            { id: "eid1254", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 1250 },
-            { id: "eid1339", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 1250 },
-            { id: "eid1640", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standing'] ], ""], position: 2000 },
-            { id: "eid1641", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 2000 },
-            { id: "eid1663", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 3500 },
-            { id: "eid1664", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 3500 },
-            { id: "eid1680", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['sitting'] ], ""], position: 3583.3333333333 },
-            { id: "eid1710", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 4083 },
-            { id: "eid1711", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['sitting'] ], ""], position: 4166.6666666667 },
-            { id: "eid1712", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['sitting'] ], ""], position: 5000 },
-            { id: "eid1713", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['running'] ], ""], position: 5083 },
-            { id: "eid1714", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standing'] ], ""], position: 5500 },
-            { id: "eid1715", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['sitting'] ], ""], position: 5750 },
-            { id: "eid1910", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['sitting'] ], ""], position: 6500 },
-            { id: "eid1896", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 6500 },
-            { id: "eid1897", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['running'] ], ""], position: 6750 },
-            { id: "eid1898", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 7250 },
-            { id: "eid1911", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 7250 },
-            { id: "eid1912", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 8000 },
-            { id: "eid1913", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 8000 },
-            { id: "eid1957", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standup'] ], ""], position: 9500 },
-            { id: "eid1958", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 9500 },
-            { id: "eid1959", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['sitting'] ], ""], position: 9583 },
-            { id: "eid1960", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['standup'] ], ""], position: 10083 },
-            { id: "eid1961", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['sitting'] ], ""], position: 10167 },
-            { id: "eid2007", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_blackcat}', ['sitting'] ], ""], position: 11000 },
-            { id: "eid2008", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['running'] ], ""], position: 11083 },
-            { id: "eid2009", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['standing'] ], ""], position: 11500 },
-            { id: "eid2010", trigger: [ function executeSymbolFunction(e, data) { this._executeSymbolAction(e, data); }, ['stop', '${_whitecat}', ['sitting'] ], ""], position: 11750 }         ]
+            { id: "eid1705", tween: [ "transform", "${_blackcat}", "scaleX", '1', { fromValue: '-1'}], position: 5750, duration: 0 }         ]
       }
    }
 },
@@ -862,10 +839,10 @@ var symbols = {
             { id: "eid15", tween: [ "style", "${_cat}", "clip", [0,100,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,503,0]}], position: 3000, duration: 0 },
             { id: "eid56", tween: [ "style", "${_cat}", "clip", [0,80,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,90,0]}], position: 4000, duration: 0 },
             { id: "eid150", tween: [ "style", "${_cat}", "-webkit-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2067", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2068", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2069", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid2070", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2478", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2479", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2480", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid2481", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
             { id: "eid1", tween: [ "style", "${_cat}", "background-position", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 0, duration: 0 },
             { id: "eid2", tween: [ "style", "${_cat}", "background-position", [-205,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 1000, duration: 0 },
             { id: "eid12", tween: [ "style", "${_cat}", "background-position", [-90,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [-205,0]}], position: 2000, duration: 0 },
