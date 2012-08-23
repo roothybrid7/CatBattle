@@ -28,6 +28,13 @@ Stage
   - 使用する場合は、Edge APIを使いTimeline上に設定したラベルを通してSprite画像を取得する
     - 例: `sym.stop("running");` 走っている画像を取得
 
+###catsAnimation_playerBlack, catsAnimation_playerWhite
+
+- 2匹の猫のSprite画像を使ってAnimationさせるSymbol
+- 様々なアクションを実装する(攻撃 -> 攻撃くらう、回避)
+- player選択によって、symbolを変更する(game symbolのコードで変更)
+- アクション完了後に、game symbolに通知する必要がある
+
 ###game
 
 - ゲーム用Symbol

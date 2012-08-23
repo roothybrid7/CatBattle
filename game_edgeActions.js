@@ -13,6 +13,20 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    (function(symbolName) {
       
       
+      Symbol.bindElementAction(compId, symbolName, "document", "compositionReady", function(sym, e) {
+         // TEST: コードによるアニメーションテスト
+         var catAnimation = sym.getSymbol("game").getSymbol("catAnimation");
+         catAnimation.play();
+
+      });
+      //Edge binding end
+
+      Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
+         // TODO: Define functions and object.
+
+      });
+      //Edge binding end
+
    })("stage");
    //Edge symbol end:'stage'
 
@@ -28,10 +42,9 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'game'
    (function(symbolName) {   
    
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 0, function(sym, e) {
+      
 
-      });
-      //Edge binding end
+      
 
    })("game");
    //Edge symbol end:'game'
@@ -41,7 +54,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    //Edge symbol: 'catAnimation_black'
    (function(symbolName) {   
    
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4500, function(sym, e) {
          sym.play("waiting");
 
       });
@@ -52,14 +65,32 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
 
    //=========================================================
    
-   //Edge symbol: 'blackcatSprite_1'
+   //Edge symbol: 'catAnimation'
    (function(symbolName) {   
    
-      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
-         sym.play("waiting");
+      
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 0, function(sym, e) {
+         // 繰り返しアニメーション 猫待機状態
+         sym.getSymbol("whitecat").play("waiting");
+         sym.getSymbol("blackcat").play("waiting");
 
       });
       //Edge binding end
+
+   })("catAnimation");
+   //Edge symbol end:'catAnimation'
+
+   //=========================================================
+   
+   //Edge symbol: 'blackcatSprite_1'
+   (function(symbolName) {   
+   
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4500, function(sym, e) {
+         sym.play("waiting");
+
+      });
+         //Edge binding end
 
       })("whitecatSprite");
    //Edge symbol end:'whitecatSprite'
