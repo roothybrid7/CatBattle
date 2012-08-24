@@ -14,69 +14,184 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       
       
       Symbol.bindElementAction(compId, symbolName, "document", "compositionReady", function(sym, e) {
-         // 背景の不透明度を下げる
-         sym.getSymbol("background").$("fight_bg").css({opacity: 0.3});
-         
-         // TEST: コードによるアニメーションテスト
-         var game = sym.getSymbol("game");
-         //game.$("commandMenuArea").hide();
-         // カラー選択
-         //game.stop("playerWhite");
-         var catAnimation = game.getSymbol("catAnimation");
-         catAnimation.play();
+         sym.play(0);
 
       });
       //Edge binding end
 
       Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
-         // TODO: Define functions and object.
+         function countByRollRandom(rollCount) {
+           var num = 0;
+           for (var i = 0; i < rollCount; i++) {
+             num += Math.round(Math.random());
+           }
+           return num;
+         }
+         
+         function isOverFlowCount(threshold, rollCount) {
+           return countByRollRandom(rollCount) > threshold;
+         }
          
          /**
           * Cat color prefix.
           * @type {Object.<string, string>}
           */
-         var COLORS = {
+         var CAT_COLORS = {
            blackcat: "b",
            whitecat: "w"
          };
          
          /**
+          * Notify player action to the game symbol.
+          * @param {string} command The command name.
+          */
+         function playerActionNotify(command) {
+           var player = sym.getVariable("player"),
+               enemy = sym.getVariable("enemy");
+           sym.$("commandMenuArea").hide();
+           // action.
+           player.action = command;
+           enemy.action = isOverFlowCount(3, 10) ? "attack" : "defence";
+         
+           var game = sym.getSymbol("game");
+           game.getVariable("run")(command, player.suffix);
+         }
+         
+         function gameEnd() {
+           var symbols = sym.getComposition().getSymbols(),
+               player = sym.getVariable("player"),
+               enemy = sym.getVariable("enemy");
+            if (player.hp > 0 && enemy.hp > 0) {
+              return false;
+            } else {
+              if (player.hp <= 0) {
+                // Gameover.
+                sym.$("gameEndTitle").html("GAME OVER");
+                sym.stop("gameEnd");   
+              } else if (enemy.hp <= 0) {
+                // you win.
+                sym.$("gameEndTitle").html("YOU WIN!");
+                sym.stop("gameEnd");   
+              }
+              return true;
+            }
+         }
+         
+         function onTurn(suffix) {
+           var game = sym.getSymbol("game"),
+               player = sym.getVariable("player"),
+               enemy = sym.getVariable("enemy");
+           if (!gameEnd()) {
+             if (player.suffix === suffix) {
+               game.getVariable("run")(enemy.action, enemy.suffix);
+             } else {
+               sym.$("commandMenuArea").show();  
+             }  
+           }
+         }
+         
+         function getOpponentBySuffix(suffix) {
+           var player = sym.getVariable("player"),
+               enemy = sym.getVariable("enemy");
+           return (player.suffix === suffix) ? enemy : player;
+         }
+         
+         /**
           * Cat charactor object.
-          * @param {string} color
-          *     A cat color[blackcat, whitecat].
+          * @parma {string} name A player type.
+          * @param {string} type
+          *     A cat type[blackcat, whitecat].
           * @constructor
           */
-         function Cat(color) {
-           this.suffix = COLORS[color] || COLORS.blackcat;
-           this.hp = 3000;
+         function Cat(name, type) {
+           this.name = name || "player";
+           this.type = type;
+           this.suffix = CAT_COLORS[type] || CAT_COLORS.blackcat;
+           this.maxHp = 5000;
+           this.hp = this.maxHp;
            this.power = 300;
-           this.guard = 200;
+           this.guard = 250;
+           this.action = ""; // attack | defence.
          }
          
-         function playerActionNotify(action) {
+         /**
+          * Factory of Cat instance.
+          * @param {string} type A cat type.
+          * @see Cat.
+          */
+         function createCat(name, type) {
+           return new Cat(name, type);
+         }
+         
+         function onOpenCommand() {
+           sym.$("commandMenuArea").show();
+         }
+         
+         function onInit() {
            var game = sym.getSymbol("game");
-           game.setVariable("playerAction", action);
-           game.getVariable("run")();
+         
+           sym.setVariable("player", createCat("player", "blackcat"));
+           sym.setVariable("enemy", createCat("enemy", "whitecat"));
+         
+           game.play(0);
          }
          
+         /**
+          * @param {string} suffix The cat type suffix.
+          * @return {(number|string)} Miss!! or damage value.
+          */
+         function getDamageAndUpdate(suffix) {
+           var player = sym.getVariable("player"),
+               enemy = sym.getVariable("enemy"),
+               damage = 0;
+               
+           var hitCounter = countByRollRandom(10);
+           if (hitCounter > 3) {
+             if (hitCounter > 7) {
+               damage = 500;
+             }
+             if (player.suffix === suffix) {
+               damage += player.power;
+               if (enemy.action === "defence") {
+                 damage -= enemy.guard;
+               }
+               enemy.hp = enemy.hp - damage;
+             } else {
+               damage += enemy.power;
+               if (player.action === "defence") {
+                 damage -= player.guard;
+               }
+               player.hp = player.hp - damage;
+             }
+           }
+           if (player.hp < 0) {
+             player.hp = 0;
+           }
+           if (enemy.hp < 0) {
+             enemy.hp = 0;
+           }
+         
+           return damage;
+         }
+         
+         sym.setVariable("createCat", createCat);
          sym.setVariable("playerActionNotify", playerActionNotify);
+         sym.setVariable("onTurn", onTurn);
+         sym.setVariable("onOpenCommand", onOpenCommand);
+         sym.setVariable("onInit", onInit);
+         sym.setVariable("getOpponentBySuffix", getOpponentBySuffix);
+         sym.setVariable("getDamageAndUpdate", getDamageAndUpdate);
 
       });
       //Edge binding end
 
       Symbol.bindElementAction(compId, symbolName, "${_attackBtn}", "click", function(sym, e) {
-         sym.$("commandMenuArea").hide();
          sym.getVariable("playerActionNotify")("attack");
-         
-         //sym.getSymbol("game").getSymbol("catAnimation").play("run_b");
-         // TODO: get catAnimation and play run.
-         // get player.
 
       });
       //Edge binding end
 
       Symbol.bindElementAction(compId, symbolName, "${_defenceBtn}", "click", function(sym, e) {
-         sym.$("commandMenuArea").hide();
          sym.getVariable("playerActionNotify")("defence");
 
       });
@@ -85,6 +200,26 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       Symbol.bindElementAction(compId, symbolName, "document", "onError", function(sym, e) {
          var compId = e.compId;
          console.log(compId, e, sym, e.originalEvent.target);
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+         sym.stop();
+         sym.getVariable("onInit")();
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 0, function(sym, e) {
+         sym.getSymbol("background").$("fight_bg").css({opacity: 0.3});
+         sym.$("commandMenuArea").hide();
+
+      });
+      //Edge binding end
+
+      Symbol.bindElementAction(compId, symbolName, "${_AgainBtn}", "click", function(sym, e) {
+         sym.play(0);
 
       });
       //Edge binding end
@@ -109,39 +244,114 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       
 
       Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
-         //シンボル変数の値を設定
-         sym.setVariable("playerTurn", true);
+         function hitted(_sym, accumulated) {
+           var offset = _sym.getLabelPosition("start");
+           _sym.stop(offset + accumulated * 1000);
+         }
          
-         // TODO:
-         // 1. Check player action and decide enemy action.
-         // 2. player cat animation.
-         // 2.1. Attack
-         // 2.1.1. run
-         // 2.1.2. hit OR miss.
-         // 2.1.3. make label string.(setVariable(miss OR 0000) -> catAnimation);
-         // 2.2. Defence
-         // 2.2.1. nothing animation.
-         // 3. enemy cat animation.
-         // 3.1. Attack
-         // 3.2. Defence
-         function attack() {
-           var playerTurn = sym.getVariable("playerTurn"),
-               player = sym.getParentSymbol().getVariable("player") || "b";
-           if (playerTurn) {
-             sym.getSymbol("catAnimation").play("attack_" + player);
+         var nextAct = {
+           openingEnd: function(suffix) {
+             // TODO: Display menu.
+             var stage = sym.getComposition().getStage();
+             stage.getVariable("onOpenCommand")();
+           },
+           runEnd: function(suffix) {
+             var catAnimation = sym.getSymbol("catAnimation"),
+                 next = null;
+                 
+             var damageValue = sym.getComposition().getStage().getVariable("getDamageAndUpdate")(suffix);
+             if (typeof damageValue === "number" && damageValue > 0) {
+               // TODO: animation Buffer.
+               next = "hit_" + suffix;
+             } else {
+               damageValue = "Miss!!"
+               next = "miss_" + suffix;
+             }
+             // TODO: set label string.
+             catAnimation.$(suffix + "_hit_label").html(damageValue);
+             catAnimation.play(next);
+           },
+           hitEnd: function(suffix) {
+             var stage = sym.getComposition().getStage(),
+                 charactor = stage.getVariable("getOpponentBySuffix")(suffix),
+                 prefix = charactor.name,
+                 maxHp = charactor.maxHp,
+                 hp = charactor.hp,
+                 accumulated = (maxHp - hp) / maxHp;
+         
+             hitted(sym.getSymbol(prefix + "LifeBar"), accumulated);
+             sym.$(prefix + "Life").html(hp);
+             sym.getSymbol("catAnimation").play("runback_" + suffix);
+           },
+           missEnd: function(suffix) {
+             sym.getSymbol("catAnimation").play("runback_" + suffix);
+           },
+           runbackEnd: function(suffix) {
+             var stage = sym.getComposition().getStage();
+             // TODO: check hp = 0, next turn.
+             stage.getVariable("onTurn")(suffix);
+             // TODO: playerTurn: enemy action.
+             // TODO: enemyTurn: display command menu.
            }
-           playerTurn = !!!playerTurn;
-           sym.getVariable("playerTurn", playerTurn);
+         };
+         
+         function onEnd(label) {
+           var chunk = label.split("_"),
+               labelName = chunk[0],
+               suffix = chunk[1];
+         
+           var fn = nextAct[labelName];
+           fn && fn(suffix);
          }
          
-         function run() {
-           var playerAction = sym.getVariable("playerAction"),
-               fn = sym.getVariable(playerAction);
-           fn && fn();
+         /**
+          * Run the game animation.(this, symbol)
+          * @param {string} action The game action.
+          * @parma {string} suffix The cat type suffix.
+          */
+         function run(action, suffix) {
+           if (!action) {
+             sym.getSymbol("catAnimation").play(0);
+           } else if (action === "attack") {
+             sym.getSymbol("catAnimation").play("attack_" + suffix);
+           } else {
+             sym.getComposition().getStage().getVariable("onTurn")(suffix);
+           }
          }
          
-         sym.setVariable("attack", attack);
+         sym.setVariable("onEnd", onEnd);
          sym.setVariable("run", run);
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         sym.stop();
+         sym.getSymbol("catAnimation").play(0);
+         
+         sym.getVariable("onEnd")("openingEnd");
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 1000, function(sym, e) {
+         sym.getSymbol("playerLifeBar").play(0);
+         sym.getSymbol("enemyLifeBar").play(0);
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 0, function(sym, e) {
+         var stage = sym.getComposition().getStage(),
+             player = stage.getVariable("player"),
+             enemy = stage.getVariable("enemy");
+         
+         var childSymbols = sym.getChildSymbols();
+         for (var i = 0, l = childSymbols.length; i < l; i++) {
+           childSymbols[i].stop(0);
+         }
+         sym.$("playerLife").html(player.hp);
+         sym.$("enemyLife").html(enemy.hp);
 
       });
       //Edge binding end
@@ -243,7 +453,10 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 5000, function(sym, e) {
          sym.getSymbol("whitecat").stop("sitting");
-         sym.play("runback_b");
+         sym.stop();
+         
+         var game = sym.getParentSymbol();
+         game.getVariable("onEnd")("missEnd_b");
 
       });
       //Edge binding end
@@ -269,6 +482,10 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 6500, function(sym, e) {
          sym.getSymbol("blackcat").play("waiting");
+         sym.stop();
+         
+         var game = sym.getParentSymbol();
+         game.getVariable("onEnd")("runbackEnd_b");
 
       });
       //Edge binding end
@@ -327,6 +544,10 @@ sym.getSymbol("blackcat").stop("standing");
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 11000, function(sym, e) {
          sym.getSymbol("blackcat").stop("sitting");
+         sym.stop();
+         
+         var game = sym.getParentSymbol();
+         game.getVariable("onEnd")("missEnd_w");
 
       });
       //Edge binding end
@@ -352,24 +573,37 @@ sym.getSymbol("blackcat").stop("standing");
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 12500, function(sym, e) {
          sym.getSymbol("whitecat").play("waiting");
+         sym.stop();
+         
+         var game = sym.getParentSymbol();
+         game.getVariable("onEnd")("runbackEnd_w");
 
       });
       //Edge binding end
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 3250, function(sym, e) {
-sym.play("runback_b");
+sym.stop();
+
+var game = sym.getParentSymbol();
+game.getVariable("onEnd")("hitEnd_b");
 
       });
       //Edge binding end
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 9250, function(sym, e) {
+sym.stop();
+
+var game = sym.getParentSymbol();
+game.getVariable("onEnd")("hitEnd_w");
 
       });
       //Edge binding end
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
          sym.stop();
-         sym.play("hit_b");
+         
+         var game = sym.getParentSymbol();
+         game.getVariable("onEnd")("runEnd_b");
 
       });
       //Edge binding end
@@ -378,6 +612,15 @@ sym.play("runback_b");
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
          sym.play("loop");
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 8000, function(sym, e) {
+         sym.stop();
+         
+         var game = sym.getParentSymbol();
+         game.getVariable("onEnd")("runEnd_w");
 
       });
       //Edge binding end
@@ -398,5 +641,50 @@ sym.play("runback_b");
 
       })("whitecatSprite");
    //Edge symbol end:'whitecatSprite'
+
+   //=========================================================
+   
+   //Edge symbol: 'playerLifeBar'
+   (function(symbolName) {   
+   
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+         sym.stop();
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         sym.stop();
+
+      });
+      //Edge binding end
+
+      Symbol.bindTimelineAction(compId, symbolName, "Default Timeline", "complete", function(sym, e) {
+
+      });
+      //Edge binding end
+
+   })("playerLifeBar");
+   //Edge symbol end:'playerLifeBar'
+
+   //=========================================================
+   
+   //Edge symbol: 'enemyLifeBar'
+   (function(symbolName) {   
+   
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 500, function(sym, e) {
+         sym.stop();
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
+         sym.stop();
+
+      });
+      //Edge binding end
+
+   })("enemyLifeBar");
+   //Edge symbol end:'enemyLifeBar'
 
 })(jQuery, AdobeEdge, "EDGE-6391929");
