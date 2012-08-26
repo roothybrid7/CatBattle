@@ -57,4 +57,11 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       })("whitecatSprite");
    //Edge symbol end:'whitecatSprite'
 
+//=========================================================
+   //Edge symbol: 'menu'
+   (function(symbolName) {
+
+   })("menu");
+   //Edge symbol end:'menu'
+
 })(jQuery, AdobeEdge, "EDGE-76607325");
