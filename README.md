@@ -1,5 +1,15 @@
 #Game
 
+##Web-fonts
+
+```CSS
+'Peralta', serif
+<link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'    >
+
+'Spirax', serif
+<link href='http://fonts.googleapis.com/css?family=Spirax' rel='stylesheet' type='text/css'>
+```
+
 ##Symbols
 
 Stage
