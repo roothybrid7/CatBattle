@@ -110,7 +110,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
            this.maxHp = 5000;
            this.hp = this.maxHp;
            this.power = 300;
-           this.guard = 250;
+         //  this.guard = 250;
            this.action = ""; // attack | defence.
          }
          
@@ -147,22 +147,24 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
                
            var hitCounter = countByRollRandom(10);
            if (hitCounter > 3) {
-             if (hitCounter > 7) {
-               damage = 500;
+             if (hitCounter > 6) {
+               damage = 500 * (hitCounter - 6);
              }
              if (player.suffix === suffix) {
                damage += player.power;
                if (enemy.action === "defence") {
-                 damage -= enemy.guard;
+                 damage = 0;
                }
                enemy.hp = enemy.hp - damage;
              } else {
                damage += enemy.power;
                if (player.action === "defence") {
-                 damage -= player.guard;
+                 damage = 0;
                }
                player.hp = player.hp - damage;
              }
+           } else {
+             damage = "Miss!!";
            }
            if (player.hp < 0) {
              player.hp = 0;
@@ -258,13 +260,13 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
            runEnd: function(suffix) {
              var catAnimation = sym.getSymbol("catAnimation"),
                  next = null;
-                 
+         
              var damageValue = sym.getComposition().getStage().getVariable("getDamageAndUpdate")(suffix);
-             if (typeof damageValue === "number" && damageValue > 0) {
+             console.log("Damage: " + damageValue);
+             if (typeof damageValue === "number") {
                // TODO: animation Buffer.
                next = "hit_" + suffix;
              } else {
-               damageValue = "Miss!!"
                next = "miss_" + suffix;
              }
              // TODO: set label string.
@@ -299,7 +301,6 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
            var chunk = label.split("_"),
                labelName = chunk[0],
                suffix = chunk[1];
-         
            var fn = nextAct[labelName];
            fn && fn(suffix);
          }
@@ -601,7 +602,6 @@ game.getVariable("onEnd")("hitEnd_w");
 
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 2000, function(sym, e) {
          sym.stop();
-         
          var game = sym.getParentSymbol();
          game.getVariable("onEnd")("runEnd_b");
 
