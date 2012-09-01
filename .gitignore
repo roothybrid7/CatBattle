@@ -1,4 +1,5 @@
 *.out
+publish/
 
 # Added by gemignore. Snippet 'Compass'
 .sass-cache
