@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cat Fight</title>
+<!-- Adobe Edge Runtime -->
+<style>
+.edgeLoad-EDGE-CATTITLE { visibility:hidden; }
+.edgeLoad-EDGE-CATGAME { visibility:hidden; }
+#catGame {
+  display: none;
+}
+</style>
+<script src="title_edgePreload.js" type="text/javascript" charset="utf-8"></script>
+<script src="game_edgePreload.js" type="text/javascript" charset="utf-8"></script>
+<!-- Adobe Edge Runtime End -->
+<script>
+var currentPage = "EDGE-CATTITLE",
+    loadComps = {};
+
+AdobeEdge.bootstrapCallback(function(compId) {
+  loadComps[compId] = AdobeEdge.getComposition(compId);
+
+  function changePage(compId, options) {
+    if (compId == currentPage) {
+      if (compId == "EDGE-CATTITLE") {
+        // To game.
+        currentPage = "EDGE-CATGAME";
+        $("#catTitle").hide();
+        $("#catGame").fadeIn();
+      } else if (compId == "EDGE-CATGAME") {
+        // To title.
+        currentPage = "EDGE-CATTITLE";
+        $("#catGame").hide();
+        $("#catTitle").fadeIn();
+      }
+
+      if (loadComps[currentPage]) {
+        var stage = loadComps[currentPage].getStage();
+        options && stage.setVariable("args", options);
+        stage.play(0);
+      }
+    }
+  }
+
+  AdobeEdge.Symbol.bindElementAction(compId, "menu", "${_blackBtn}", "click", function(sym, e) {
+    var opts = {type: "blackcat"};
+    changePage(compId, opts);
+  });
+
+  AdobeEdge.Symbol.bindElementAction(compId, "menu", "${_whiteBtn}", "click", function(sym, e) {
+    var opts = {type: "whitecat"};
+    changePage(compId, opts);
+  });
+
+  AdobeEdge.Symbol.bindElementAction(compId, "stage", "${_BackBtn}", "click", function(sym, e) {
+    changePage(compId);
+  });
+});
+</script>
+</head>
+<body style="margin:0;padding:0;">
+<div id="catTitle" class="EDGE-CATTITLE"></div>
+<div id="catGame" class="EDGE-CATGAME"></div>
+</body>
+</html>
