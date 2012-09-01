@@ -76,28 +76,30 @@ var symbols = {
    dom: [
    {
       rect: ['-163','-265','967','931','undefined','undefined'],
-      transform: [{1:0,0:0},{},{},['0.662','0.43']],
+      transform: [{},{},{},['0.662','0.43']],
       id: 'fight_bg',
       opacity: 1,
       type: 'image',
       fill: ['rgba(0,0,0,0)','images/fight_bg.png','0%','0%','100%','100%']
    },
    {
-      rect: ['50','10','540','105','undefined','undefined'],
-      type: 'rect',
-      opacity: 0.3,
-      id: 'headerDebugArea',
-      stroke: [0,'rgba(0,0,0,1)','none'],
       transform: {},
+      rect: ['50','10','540','105','undefined','undefined'],
+      stroke: [0,'rgba(0,0,0,1)','none'],
+      type: 'rect',
+      id: 'headerDebugArea',
+      opacity: 0.3,
+      display: 'none',
       fill: ['rgba(43,218,181,1.00)']
    },
    {
-      rect: ['50','85','540','225','undefined','undefined'],
-      type: 'rect',
-      opacity: 0.3,
-      id: 'contentDebugArea',
-      stroke: [0,'rgb(0, 0, 0)','none'],
       transform: {},
+      rect: ['50','85','540','225','undefined','undefined'],
+      stroke: [0,'rgb(0, 0, 0)','none'],
+      type: 'rect',
+      id: 'contentDebugArea',
+      opacity: 0.3,
+      display: 'none',
       fill: ['rgba(192,192,192,1.00)']
    }],
    symbolInstances: [
@@ -105,9 +107,13 @@ var symbols = {
    },
    states: {
       "Base State": {
+         "${symbolSelector}": [
+            ["style", "height", '399.99484px'],
+            ["style", "width", '639.99928px']
+         ],
          "${_contentDebugArea}": [
             ["style", "top", '85px'],
-            ["style", "display", 'block'],
+            ["style", "display", 'none'],
             ["style", "opacity", '0.3'],
             ["color", "background-color", 'rgba(192,192,192,1.00)'],
             ["style", "height", '225px']
@@ -115,15 +121,11 @@ var symbols = {
          "${_headerDebugArea}": [
             ["color", "background-color", 'rgba(43,218,181,1.00)'],
             ["style", "top", '10px'],
-            ["style", "display", 'block'],
+            ["style", "display", 'none'],
             ["style", "height", '105px'],
             ["style", "opacity", '0.3'],
             ["style", "left", '50px'],
             ["style", "width", '540px']
-         ],
-         "${symbolSelector}": [
-            ["style", "height", '399.99484px'],
-            ["style", "width", '639.99928px']
          ],
          "${_fight_bg}": [
             ["style", "top", '-265.5px'],
@@ -141,8 +143,8 @@ var symbols = {
          duration: 0,
          autoPlay: true,
          timeline: [
-            { id: "eid3074", tween: [ "style", "${_contentDebugArea}", "display", 'block', { fromValue: 'block'}], position: 0, duration: 0 },
-            { id: "eid3075", tween: [ "style", "${_headerDebugArea}", "display", 'block', { fromValue: 'block'}], position: 0, duration: 0 }         ]
+            { id: "eid3074", tween: [ "style", "${_contentDebugArea}", "display", 'none', { fromValue: 'none'}], position: 0, duration: 0 },
+            { id: "eid3075", tween: [ "style", "${_headerDebugArea}", "display", 'none', { fromValue: 'none'}], position: 0, duration: 0 }         ]
       }
    }
 },
@@ -226,10 +228,10 @@ var symbols = {
          },
          timeline: [
             { id: "eid150", tween: [ "style", "${_cat}", "-webkit-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid802", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid803", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid804", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid805", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid814", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid815", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid816", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid817", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
             { id: "eid10", tween: [ "style", "${_cat}", "clip", [0,80,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,90,0]}], position: 0, duration: 0 },
             { id: "eid11", tween: [ "style", "${_cat}", "clip", [0,100,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,80,503,0]}], position: 1000, duration: 0 },
             { id: "eid13", tween: [ "style", "${_cat}", "clip", [0,100,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,90,0]}], position: 2000, duration: 0 },
@@ -332,10 +334,10 @@ var symbols = {
             { id: "eid15", tween: [ "style", "${_cat}", "clip", [0,100,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,503,0]}], position: 3000, duration: 0 },
             { id: "eid56", tween: [ "style", "${_cat}", "clip", [0,80,90,0], { valueTemplate: 'rect(@@0@@px @@1@@px @@2@@px @@3@@px)', fromValue: [0,100,90,0]}], position: 4000, duration: 0 },
             { id: "eid150", tween: [ "style", "${_cat}", "-webkit-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid806", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid807", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid808", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
-            { id: "eid809", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid818", tween: [ "style", "${_cat}", "-moz-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid819", tween: [ "style", "${_cat}", "-ms-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid820", tween: [ "style", "${_cat}", "msTransformOrigin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
+            { id: "eid821", tween: [ "style", "${_cat}", "-o-transform-origin", [50,18], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,18]}], position: 4000, duration: 0 },
             { id: "eid1", tween: [ "style", "${_cat}", "background-position", [0,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 0, duration: 0 },
             { id: "eid2", tween: [ "style", "${_cat}", "background-position", [-205,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [0,0]}], position: 1000, duration: 0 },
             { id: "eid12", tween: [ "style", "${_cat}", "background-position", [-90,0], { valueTemplate: '@@0@@px @@1@@px', fromValue: [-205,0]}], position: 2000, duration: 0 },
@@ -635,10 +637,10 @@ var symbols = {
             { id: "eid121", tween: [ "style", "${_menuTitleArea}", "opacity", '1', { fromValue: '0'}], position: 0, duration: 500, easing: "easeOutElastic" },
             { id: "eid163", tween: [ "transform", "${_menuTitle}", "scaleX", '1', { fromValue: '0'}], position: 500, duration: 500, easing: "easeInOutElastic" },
             { id: "eid159", tween: [ "style", "${_menuListArea}", "-webkit-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
-            { id: "eid810", tween: [ "style", "${_menuListArea}", "-moz-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
-            { id: "eid811", tween: [ "style", "${_menuListArea}", "-ms-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
-            { id: "eid812", tween: [ "style", "${_menuListArea}", "msTransformOrigin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
-            { id: "eid813", tween: [ "style", "${_menuListArea}", "-o-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
+            { id: "eid822", tween: [ "style", "${_menuListArea}", "-moz-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
+            { id: "eid823", tween: [ "style", "${_menuListArea}", "-ms-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
+            { id: "eid824", tween: [ "style", "${_menuListArea}", "msTransformOrigin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
+            { id: "eid825", tween: [ "style", "${_menuListArea}", "-o-transform-origin", [50,50], { valueTemplate: '@@0@@% @@1@@%', fromValue: [50,100]}], position: 250, duration: 500, easing: "easeOutQuart" },
             { id: "eid285", tween: [ "style", "${_blackcatSprite}", "display", 'block', { fromValue: 'none'}], position: 1250, duration: 0, easing: "easeOutQuart" },
             { id: "eid161", tween: [ "style", "${_menuListArea}", "opacity", '1', { fromValue: '0'}], position: 250, duration: 500, easing: "easeOutQuart" },
             { id: "eid167", tween: [ "style", "${_menuTitle}", "opacity", '1', { fromValue: '0'}], position: 500, duration: 500, easing: "easeInOutElastic" },
