@@ -13,6 +13,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    (function(symbolName) {
       
       
+      Symbol.bindTimelineAction(compId, symbolName, "Default Timeline", "play", function(sym, e) {
+         sym.getSymbol("menu").play(0);
+
+      });
+      //Edge binding end
+
    })("stage");
    //Edge symbol end:'stage'
 
@@ -64,4 +70,4 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
    })("menu");
    //Edge symbol end:'menu'
 
-})(jQuery, AdobeEdge, "EDGE-76607325");
+})(jQuery, AdobeEdge, "EDGE-CATTITLE");

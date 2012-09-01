@@ -14,7 +14,10 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
       
       
       Symbol.bindElementAction(compId, symbolName, "document", "compositionReady", function(sym, e) {
-         sym.play(0);
+         var path = location.pathname;
+         if (path.match("game.html") !== null) {
+           sym.play(0);
+         }
 
       });
       //Edge binding end
@@ -128,10 +131,17 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          }
          
          function onInit() {
-           var game = sym.getSymbol("game");
+           var game = sym.getSymbol("game"),
+               args = sym.getVariable("args"),
+               type = args && args.type || "blackcat";
          
-           sym.setVariable("player", createCat("player", "blackcat"));
-           sym.setVariable("enemy", createCat("enemy", "whitecat"));
+           sym.setVariable("player", createCat("player", type));
+           for (var k in CAT_COLORS) {
+             if (k !== type){
+               sym.setVariable("enemy", createCat("enemy", k));
+               break;  
+             }
+           }
          
            game.play(0);
          }
@@ -176,6 +186,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
            return damage;
          }
          
+         function onOpeningEnd() {
+           var game = sym.getSymbol("game"),
+               player = sym.getVariable("player");
+           game.stop("player_" + player.type);
+         }
+         
          sym.setVariable("createCat", createCat);
          sym.setVariable("playerActionNotify", playerActionNotify);
          sym.setVariable("onTurn", onTurn);
@@ -183,6 +199,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          sym.setVariable("onInit", onInit);
          sym.setVariable("getOpponentBySuffix", getOpponentBySuffix);
          sym.setVariable("getDamageAndUpdate", getDamageAndUpdate);
+         sym.setVariable("onOpeningEnd", onOpeningEnd);
 
       });
       //Edge binding end
@@ -253,8 +270,8 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          
          var nextAct = {
            openingEnd: function(suffix) {
-             // TODO: Display menu.
              var stage = sym.getComposition().getStage();
+             stage.getVariable("onOpeningEnd")();
              stage.getVariable("onOpenCommand")();
            },
            runEnd: function(suffix) {
@@ -353,6 +370,20 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // よく使用する 
          }
          sym.$("playerLife").html(player.hp);
          sym.$("enemyLife").html(enemy.hp);
+
+      });
+      //Edge binding end
+
+      Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 4000, function(sym, e) {
+         var catAnimation = sym.getSymbol("catAnimation"),
+             $wLabel = catAnimation.$("w_hit_label"),
+             $bLabel = catAnimation.$("b_hit_label");
+         
+         var wEdgeData = $wLabel.data("edgeBaseData"),
+             bEdgeData = $bLabel.data("edgeBaseData");
+         
+         wEdgeData.transformData.scaleX = -1;
+         bEdgeData.transformData.scaleX = -1;
 
       });
       //Edge binding end
@@ -687,4 +718,4 @@ game.getVariable("onEnd")("hitEnd_w");
    })("enemyLifeBar");
    //Edge symbol end:'enemyLifeBar'
 
-})(jQuery, AdobeEdge, "EDGE-6391929");
+})(jQuery, AdobeEdge, "EDGE-CATGAME");
