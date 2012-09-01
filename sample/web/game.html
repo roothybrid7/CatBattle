@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>Game</title>
+<!--Adobe Edge Runtime-->
+    <script type="text/javascript" charset="utf-8" src="game_edgePreload.js"></script>
+    <style>
+        .edgeLoad-EDGE-CATGAME { visibility:hidden; }
+    </style>
+<!--Adobe Edge Runtime End-->
+
+</head>
+<body style="margin:0;padding:0;">
+	<div id="Stage" class="EDGE-CATGAME edgeLoad-EDGE-CATGAME">
+	
+        <div id="Stage_background" class="edgeLoad-EDGE-CATGAME">
+            <div id="Stage_background_fight_bg"></div>
+            <div id="Stage_background_headerDebugArea"></div>
+            <div id="Stage_background_contentDebugArea"></div>
+        </div>
+        <div id="Stage_game" style="display:none;">
+            <div id="Stage_game_lifeBarArea">
+                <div id="Stage_game_enemyLifeBar">
+                    <div id="Stage_game_enemyLifeBar_bar"></div>
+                </div>
+                <div id="Stage_game_playerLifeBar">
+                    <div id="Stage_game_playerLifeBar_bar"></div>
+                </div>
+                <p id="Stage_game_enemyText">Enemy</p>
+                <p id="Stage_game_playerText">Player</p>
+                <p id="Stage_game_enemyLife">3000</p>
+                <p id="Stage_game_playerLife">3000</p>
+            </div>
+            <div id="Stage_game_catAnimation">
+                <div id="Stage_game_catAnimation_blackcat">
+                    <div id="Stage_game_catAnimation_blackcat_cat"></div>
+                </div>
+                <div id="Stage_game_catAnimation_whitecat">
+                    <div id="Stage_game_catAnimation_whitecat_cat"></div>
+                </div>
+                <div id="Stage_game_catAnimation_white_stamp"></div>
+                <div id="Stage_game_catAnimation_black_stamp"></div>
+                <div id="Stage_game_catAnimation_b_hit_label">Miss!!</div>
+                <div id="Stage_game_catAnimation_w_hit_label">Miss!!</div>
+            </div>
+        </div>
+        <div id="Stage_commandMenuArea" class="edgeLoad-EDGE-CATGAME">
+            <div id="Stage_serif_pink" class="edgeLoad-EDGE-CATGAME"></div>
+            <div id="Stage_defenceBtn" class="edgeLoad-EDGE-CATGAME">
+                <div id="Stage_blackcat_stamp2" class="edgeLoad-EDGE-CATGAME"></div>
+                <p id="Stage_defenceText" class="edgeLoad-EDGE-CATGAME">Defence</p>
+            </div>
+            <div id="Stage_attackBtn" class="edgeLoad-EDGE-CATGAME">
+                <div id="Stage_blackcat_stamp" class="edgeLoad-EDGE-CATGAME"></div>
+                <p id="Stage_attackText" class="edgeLoad-EDGE-CATGAME">Attack</p>
+            </div>
+        </div>
+        <div id="Stage_gameEndArea" style="display:none;">
+            <div id="Stage_gameEndTitle" class="edgeLoad-EDGE-CATGAME">GAME OVER</div>
+            <div id="Stage_BackBtn" class="edgeLoad-EDGE-CATGAME">
+                <div id="Stage_Back" class="edgeLoad-EDGE-CATGAME">Back<br></div>
+            </div>
+            <div id="Stage_AgainBtn" class="edgeLoad-EDGE-CATGAME">
+                <div id="Stage_Again" class="edgeLoad-EDGE-CATGAME">Again</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
