@@ -1,6 +1,3 @@
-[submodule "CatFight"]
-	path = CatFight
-	url = git@github.com:roothybrid7/CatFight.git
 [submodule "_pages"]
 	path = _pages
-	url = git@github.com:roothybrid7/CatFight.git
+	url = git@github.com:roothybrid7/CatBattle.git
